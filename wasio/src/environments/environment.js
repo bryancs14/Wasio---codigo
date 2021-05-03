@@ -1,0 +1,1 @@
+export const URL_BACKEND = "https://608ed3ac0294cd001765dd60.mockapi.io";
