@@ -1,13 +1,19 @@
 import React from "react";
-import { Route, Switch } from "react-router";
+import { Route, Switch } from "react-router-dom";
+import GuestHeader from "./components/GuestHeader";
+import HomePageScreen from "./pages/HomePage/HomePageScreen";
+
 
 const GuestRouter = () => {
   return (
-    <Switch>
-      <Route path="/">
-        
-      </Route>
-    </Switch>
+    <>
+      <GuestHeader />
+      <Switch>
+        <Route path="/">
+          <HomePageScreen />
+        </Route>
+      </Switch>
+    </>
   );
 };
 
