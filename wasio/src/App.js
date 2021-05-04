@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AuthState from "./context/authState";
 import AdminRouter from "./modules/admin/AdminRouter";
 import AuthRouter from "./modules/auth/AuthRouter";
-import ClientRouter from "./modules/client/ClientRouter";
+import ClientRouter from "./modules/guest/ClientRouter";
 import "./styles/home.css"
 
 const App = () => {
