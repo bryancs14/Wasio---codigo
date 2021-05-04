@@ -4,7 +4,6 @@ import AuthState from "./context/authState";
 import AdminRouter from "./modules/admin/AdminRouter";
 import AuthRouter from "./modules/auth/AuthRouter";
 import ClientRouter from "./modules/client/ClientRouter";
-// import "./styles/home.css"
 
 const App = () => {
   return (
