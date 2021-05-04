@@ -27,7 +27,6 @@ const ProductosPage = () => {
         <div class="col-lg-2 mt-3 naranja">
           <ProductosFilter />
         </div>
-
         <div class="col-lg-10 mb-3 mt-3 rojo">
           <Productos productos={productos}/>
         </div>

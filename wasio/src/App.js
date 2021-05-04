@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AuthState from "./context/authState";
 import AdminRouter from "./modules/admin/AdminRouter";
 import AuthRouter from "./modules/auth/AuthRouter";
-import { ClienteRouter } from "./modules/cliente/ClienteRouter";
-import GuestRouter from "./modules/guest/GuestRouter";
+import ClientRouter from "./modules/client/ClientRouter";
 // import "./styles/home.css"
 
 const App = () => {
@@ -18,11 +17,8 @@ const App = () => {
           <Route path="/auth">
             <AuthRouter />
           </Route>
-          <Route path="/productos">
-            <ClienteRouter />
-          </Route>
-          <Route path="/" exact>
-            <GuestRouter />
+          <Route path="/">
+            <ClientRouter />
           </Route>
         </Switch>
       </Router>
