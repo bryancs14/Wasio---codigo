@@ -1,14 +1,15 @@
 import React from "react";
 import { Route, Switch } from "react-router";
+import ClientHomePage from "./pages/home/ClientHomePage";
 
-const GuestRouter = () => {
+const ClientRouter = () => {
   return (
     <Switch>
       <Route path="/">
-        
+        <ClientHomePage />
       </Route>
     </Switch>
   );
 };
 
-export default GuestRouter;
+export default ClientRouter;
