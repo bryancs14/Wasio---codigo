@@ -5,6 +5,7 @@ import AdminRouter from "./modules/admin/AdminRouter";
 import AuthRouter from "./modules/auth/AuthRouter";
 import { ClienteRouter } from "./modules/cliente/ClienteRouter";
 import GuestRouter from "./modules/guest/GuestRouter";
+// import "./styles/home.css"
 
 const App = () => {
   return (
