@@ -3,7 +3,6 @@ import "./../../../../styles/home.css"
 import banner from "./../../../../assets//img/main__banner.png";
 import HomeSectionCategoria from "./components/HomeSectionCategoria";
 import { getCategorias } from "../../../../services/categoriasServices";
-import ClientFooter from "../../components/ClientFooter";
 
 const ClientHomePage = () => {
 
@@ -253,7 +252,6 @@ const ClientHomePage = () => {
           })
         }
       </main>
-      <ClientFooter />
     </>
   );
 };
