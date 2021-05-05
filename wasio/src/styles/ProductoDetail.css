@@ -1,0 +1,441 @@
+main{
+    display: flex;
+    justify-content: center;
+}
+
+.contenedor-wraper{
+    width: 1400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+
+.ruta-pagina{
+    margin: 10px 0px;
+    padding: 5px;
+    text-align: left;
+}
+
+.contenedor-producto{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.seccion-principal{
+    display: flex;
+    gap: 15px;
+}
+
+.imagenes-producto{
+    display: flex;
+
+}
+
+.contenedor-imagenes{
+    display: flex;
+    flex-direction: column;
+ 
+}
+
+.contenedor-imagenes > img{
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #bdbbbc;
+}
+
+.imagen-principal{
+    padding: 5px;
+    position: relative;
+
+}
+
+.imagen-principal>.imagen-principal{
+    border: 1px solid rgba(135,156,164,0.06);
+    box-shadow: -1px 1px 26px 3px rgba(220,216,204,0.38) inset;
+    width: 630px;
+}
+
+.card__descuento {
+    background-color: red;
+    color: white;
+    width: 50px;
+    height: 20px;
+    font-size: 13px;
+    position: absolute;
+    top: 20px;
+    left: 6px;
+    text-align: end;
+    padding: 2px 4px;
+}
+
+
+/* Parte derecha */
+
+.atributos-producto{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    gap: 15px;
+}
+
+
+
+.input-select{
+    height: 30px;
+    width: 20%;
+}
+
+.talla{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cantidad{
+    display: flex;
+    gap: 2px;
+    align-items: center;
+}
+
+
+/* 
+Descripción del producto
+ */
+
+
+.descripcion-producto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.descripcion-detalle{
+    margin-top  : 5px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-weight: normal;
+}
+
+
+
+
+/* Sección otros productos */
+.otros-productos{
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.producto-interes{
+    font-size: 35px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.carrusel-productos{
+    display: flex;
+    padding: 5px;
+    gap: 5px;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+.card {
+    border: 1px solid #f4f4f4;
+    padding: 10px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card > img{
+    height: 300px;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 15px;
+}
+
+
+
+
+/* boton */
+button {
+    background-color: #0b4c60;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: lighter;
+    transition: background-color 0.1s linear;
+}
+
+button:hover {
+    background-color: #5a5a5a;
+}
+
+.btn-vermas{
+    height: 50px;
+    width: 320px;
+    
+}
+
+.btn-agregarcarrito{
+    width: 70%;
+    height: 30px;
+}
+
+/* Seccion suscripcion---------- */
+
+.seccion-suscripcion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0px 15px;
+}
+
+.seccion-suscripcion > figure{
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.img_suscripcion{
+   width: 90%;
+}
+
+
+.suscribete{
+    font-size: 30px;
+    text-align: center;
+}
+
+.input-container {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 5px;
+    width: 300px;
+    height: 50px;
+    display: flex;
+}
+
+
+.input-suscribete{
+    border: none;
+    width: calc(100% - 5px);
+    outline: none;
+}
+
+
+.btn-subscribete{
+    background-color: white;
+    color: #5a5a5a;
+}
+
+
+
+
+@media (max-width: 1600px) {
+    .imagen-principal>img{
+        width: 600px;
+    }
+}
+
+@media (max-width: 1500px) {
+    .imagen-principal>img{
+        width: 550px;
+    }
+}
+
+@media (max-width: 1450px) {
+    .imagen-principal>img{
+        width: 550px;
+    }
+}
+
+
+@media (max-width: 1400px) {
+    .imagen-principal>img{
+        width: 500px;
+    }
+
+    .card > img{
+        height: 280px;
+    }
+
+    .seccion-suscripcion > figure{
+        width: 90%;
+    }
+
+}
+
+
+@media (max-width: 1350px) {
+    .imagen-principal>img{
+        width: 450px;
+    }
+
+
+    .seccion-suscripcion > figure{
+        width: 85%;
+    }
+
+    .card > img{
+        height: 275px;
+    }
+
+
+}
+
+@media (max-width: 1300px) {
+    .imagen-principal>img{
+        width: 400px;
+    }
+
+    .card > img{
+        height: 270px;
+    }
+}
+
+@media (max-width: 1260px) {
+
+    .seccion-principal{
+        flex-direction: column;
+        /* display: flex;
+        gap: 15px; */
+    }
+
+    .imagen-principal>img{
+        width: 800px;
+    }
+
+    .talla{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .cantidad{
+        display: flex;
+        gap: 2px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .p-cantidad{
+        display: flex;
+        justify-content: center;
+    }
+
+    .card > img{
+        height: 250px;
+    }
+
+    .seccion-suscripcion > figure{
+        width: 100%;
+        height: 18px;
+    }
+
+}
+
+@media (max-width: 978px) {
+    .card > img{
+        height: 200px;
+    }
+
+    .seccion-suscripcion > figure{
+        width: 100%;
+        overflow: hidden;
+        height: 14px;
+    }
+
+
+}
+
+
+@media (max-width: 780px) {
+    .imagenes-producto{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .contenedor-imagenes{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .card > img{
+        height: 120px;
+    }
+    
+    .imagen-principal{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .imagen-principal>img{
+        width: 650px;
+    }
+
+    .seccion-suscripcion > figure{
+        width: 80%;
+        overflow: hidden;
+    }
+
+    .img_suscripcion{
+        height: 10px;
+    }
+
+    .carrusel-productos{
+        flex-wrap: wrap;
+    }
+}
+
+
+@media (max-width:500px) {
+    .imagen-principal>img{
+        width: 450px;
+    
+    }
+
+    .card > img{
+        height: 120px;
+    }
+
+    .seccion-suscripcion > figure{
+        width: 80%;
+        overflow: hidden;
+    }
+
+    .img_suscripcion{
+        height: 10px;
+        width: 400px;
+    }
+
+
+
+    }

@@ -5,3 +5,10 @@ export const getProductos = async () => {
   const rpta = await axios.get(URL_BACKEND + "/producto");
   return rpta;
 };
+
+export const getProductoById = async(id) => {
+  const rpta = await axios.get(URL_BACKEND + "/producto/" + id);
+  return rpta;
+}
+
+
