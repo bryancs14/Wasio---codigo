@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getCategorias } from "../../../../services/categoriasServices";
 import { getMarcas } from "../../../../services/marcasService";
+import { postProducto } from "../../../../services/productosService";
 import AdminNavbar from "../../components/AdminNavbar";
 
 const AdminCrearProducto = () => {
@@ -12,7 +13,8 @@ const AdminCrearProducto = () => {
     descripcion: "",
     precio: 0,
     porc_descuento: 0,
-    detalle: {},
+    detalle: {talla: "aaa"},
+    imagen: ""
   };
 
   const [formulario, setFormulario] = useState(formularioVacio);
@@ -26,6 +28,21 @@ const AdminCrearProducto = () => {
     });
     console.log(formulario);
   };
+
+  const hangleSubmit = (e) => {
+    e.preventDefault();
+    postProducto(formulario).then(rpta => {
+      console.log(rpta);
+    })
+  }
+
+  const hangleReset = () => {
+    setFormulario(formularioVacio);
+  }
+
+  const hangleCancel = () => {
+
+  }
 
   useEffect(() => {
       getCategorias().then(rpta => {
@@ -43,7 +60,7 @@ const AdminCrearProducto = () => {
   return (
     <main>
       <section className="section__crear">
-        <div className="Crear__producto">
+        <form className="Crear__producto" onSubmit={hangleSubmit}>
           <div className="input1">
             <label htmlFor="">Nombre:</label>
             <input
@@ -126,23 +143,22 @@ const AdminCrearProducto = () => {
               </div>
             </div>
           </div>
-
           <div className="input5">
             <label htmlFor="">Fotos del producto:</label> <br />
             <input type="file" />
           </div>
-        </div>
         <div className="Btns__crear">
           <button className="btn__crear btn1" type="submit">
             <i className="fas fa-upload"></i> <p> Crear </p>
           </button>
-          <button className="btn__crear btn2" type="button">
+          <button className="btn__crear btn2" type="button" onClick={hangleReset}>
             <i className="fas fa-chevron-left"></i> <p> Limpiar </p>
           </button>
-          <button className="btn__crear btn3" type="button">
+          <button className="btn__crear btn3" type="button" onClick={hangleCancel}>
             <i className="fas fa-ban"></i> <p> Cancelar </p>
           </button>
         </div>
+        </form>
       </section>
     </main>
   );

@@ -8,7 +8,7 @@ export const getProductos = async () => {
 
 export const postProducto = async (objProducto) => {
   const rpta = await axios.post(
-    URL_BACKEND + "producto",
+    URL_BACKEND + "/producto",
     {...objProducto},
     {
       headers: {
