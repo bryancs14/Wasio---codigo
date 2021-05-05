@@ -3,7 +3,7 @@ import AuthContext from "./authContext";
 
 const AuthState = (props) => {
   return (
-    <AuthContext.Provider>
+    <AuthContext.Provider value={{}}>
       {props.children}
     </AuthContext.Provider>
   );
