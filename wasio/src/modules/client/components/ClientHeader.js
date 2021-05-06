@@ -1,7 +1,20 @@
 import React from "react";
+import { useHistory } from "react-router";
 import "../../../styles/Header.css";
 
 const ClientHeader = () => {
+
+
+const history = useHistory();
+
+const handleSubmit = e => {
+  if (e.keyCode === 13){
+    history.push("/productos")
+  }
+}
+
+
+
   return (
     <header class="header">
       <div class="header__wrapper seccion1">
@@ -14,6 +27,7 @@ const ClientHeader = () => {
                 class="buscarmq open-mobile"
                 type="text"
                 placeholder="Buscar"
+                onKeyUp={handleSubmit}
               />
             </div>
           </div>
@@ -31,7 +45,7 @@ const ClientHeader = () => {
           <div class="header__buscador">
             <div class="buscador">
               <button type="submit" class="fas fa-search"></button>
-              <input class="buscar" type="text" placeholder="Buscar" />
+              <input class="buscar" type="text" placeholder="Buscar" onKeyUp={handleSubmit}/>
             </div>
           </div>
 

@@ -20,7 +20,7 @@ const Producto = ({ objProducto }) => {
               <strike>S/. {objProducto.precio}</strike>
             </strong>
             <span className="text-danger">
-              <strong> - S/. {objProducto.descuento}</strong>
+              <strong> - S/. {+objProducto.precio - ( (+objProducto.porc_descuento/100) * +objProducto.precio )}</strong>
             </span>
           </p>
         </div>

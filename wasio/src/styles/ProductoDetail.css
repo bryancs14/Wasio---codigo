@@ -39,7 +39,7 @@ main{
 .contenedor-imagenes{
     display: flex;
     flex-direction: column;
- 
+    gap: 10px; 
 }
 
 .contenedor-imagenes > img{
@@ -50,6 +50,7 @@ main{
 
 .imagen-principal{
     padding: 5px;
+    margin-left: 5px;
     position: relative;
 
 }

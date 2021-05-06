@@ -1,9 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductoById } from "../../../../services/productosService";
 import "../../../../styles/ProductoDetail.css";
 
-const ProductoDetailPage = (props) => {
+const ProductoDetailPage = () => {
+
+    const refSrcImagen = useRef();
+
+    const changeImage = e => {
+        refSrcImagen.current.src = e.target.src;
+    }
+
+
+
   let params = useParams();
   let productoId = params.id;
 
@@ -18,59 +27,58 @@ const ProductoDetailPage = (props) => {
 
   return (
     <main>
+        {
+            objProducto ? 
+       
     <div class="contenedor-wraper">
       <div class="ruta-pagina">
-        <p>Inicio / <span>SANDALIA PLANA DE VERANO</span></p>
+        <p>Inicio / <span>{objProducto.nombre}</span></p>
       </div>
       <div class="contenedor-producto">
         <section class="seccion-principal">
           <section class="imagenes-producto">
             <div class="contenedor-imagenes">
-              <img
-                src="https://aws-samishop-recursos.s3.us-east-1.amazonaws.com/00000D3E/es-PE/images/banners/juvenil1-min.jpg"
-                alt="prenda pijama"
-                width="90"
-              />
-              <img
-                src="https://aws-samishop-recursos.s3.us-east-1.amazonaws.com/00000D3E/es-PE/images/banners/juvenil2-min.jpg"
-                alt="prenda pijama"
-                width="90"
-              />
-              <img
-                src="https://aws-samishop-recursos.s3.us-east-1.amazonaws.com/00000D3E/es-PE/images/banners/juvenil3-min.jpg"
-                alt="prenda pijama"
-                width="90"
-              />
+                {
+                    objProducto.imagen.map((obj) => {
+                        return(
+                            <img src={obj} alt = "" width = "90" onClick = {(e) => {
+                                changeImage(e);
+                            }}/>
+                        )
+                    })
+                }
+
             </div>
             <div class="imagen-principal">
-              <div class="card__descuento">-20%</div>
+              <div class="card__descuento">-{objProducto.porc_descuento}%</div>
 
               <img
-                src="https://aws-samishop-recursos.s3.us-east-1.amazonaws.com/00000D3E/es-PE/images/banners/juvenil1-min.jpg"
+                src={objProducto.imagen[0]}
                 alt=""
+                ref={refSrcImagen}
               />
             </div>
           </section>
 
           <div class="contenedor-atributos-producto">
             <div class="atributos-producto">
-              <h1>SANDALIA PLANA DE VERANO NEGRO/DORADO</h1>
+              <h1>{objProducto.nombre}</h1>
               <hr />
               <div>
                 <p>
-                  Sandalia plana de verano, producto Trujillano, diseños
-                  exclusivos, excelente calidad y garantía
+                {objProducto.descripcion}
                 </p>
               </div>
-              <h2>S/.50.00</h2>
+              <h2>S/. {objProducto.precio}</h2>
               <div class="talla">
                 <label for="">Talla:</label>
                 <select name="" id="" class="input-select">
-                  <option value="">35</option>
-                  <option value="">36</option>
-                  <option value="">37</option>
-                  <option value="">38</option>
-                  <option value="">39</option>
+                    {objProducto.detalle.Tallas.map((obj) => {
+                        return(
+                            <option value="">{obj}</option>
+                        );
+
+                    })}
                 </select>
               </div>
               <div class="p-cantidad">
@@ -176,7 +184,7 @@ const ProductoDetailPage = (props) => {
           </form>
         </div>
       </section>
-    </div>
+    </div> : null }
   </main>
   );
 };
