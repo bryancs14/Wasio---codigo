@@ -53,6 +53,7 @@ ul, li {list-style: none;}
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    height: 100%;
 }
 .btn__menu{
     outline: none;
@@ -136,6 +137,7 @@ ul, li {list-style: none;}
     color: #fff;
     text-align: center;
 }
+
 .main {
     display: flex;
     flex-wrap: wrap;
@@ -147,7 +149,8 @@ ul, li {list-style: none;}
     background-color: #fff;
     position: absolute;
     left: 0;
-    top: 0;
+    top: 50px;
+    z-index: 1000;
     box-shadow:  2px 2px 5px rgb(34, 34, 34, 0.5);
     transition: width 0.5s ease-in;
 }

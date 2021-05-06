@@ -58,7 +58,8 @@ const AdminCrearProducto = () => {
   }, [])
 
   return (
-    <main>
+    <main className="admin__main">
+      <AdminNavbar />
       <section className="section__crear">
         <form className="Crear__producto" onSubmit={hangleSubmit}>
           <div className="input1">

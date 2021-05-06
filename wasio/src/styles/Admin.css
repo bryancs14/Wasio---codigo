@@ -2,33 +2,39 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    }
+}
     body{
         width: 100%;
         font-family: 'Montserrat', sans-serif;
         font-weight: 400;
         font-size: 14px  
     }
-    ul, li {list-style: none;}
     
-    .header__wrapper{
-       max-height: 120px;
-       display: flex;
-       flex-direction: column;
-       justify-content: center;
-       padding: 0px 20px;
+    .admin__sidebar__link p {
+        margin-bottom: 0px;
     }
-    .seccion1{
+
+    .admin__sidebar__list {
+        padding-left: 0;
+    } 
+
+    .admin__header {
+        display: flex;
+        flex-direction: column;
+        max-height: 120px;
+        position: relative;
+    }
+
+    .admin__header__main{
         height: 100px;
         background-color: #fff;
         position: relative;
+        padding: 0px 20px;
     }
     .patron__header {
         height: 20px;
-       width: 100%;
-        position: absolute;
-        left: 0;
-        bottom: 0;
+        width: 100%;
+        position: relative;
         background-image: url("./../assets/img/Patron__header.png");
         background-size: 35%;
         animation-name: deslizando;
@@ -45,7 +51,7 @@
         }
     }
     
-    .header__main,
+    .admin__header__main,
     .header__list{
         display: flex;
         flex-direction: row;
@@ -60,14 +66,15 @@
         border: none;
         padding-bottom: 8px;
     }
-    .header__logo, .header__buscador, .header__links {
+    .header__logo, .header__links {
         display: flex;
         min-width: 250px;
-        justify-content: center;   
+        justify-content: center;
+        align-items: center;
     }
     .header__logo{
         background-color: #fff;
-        padding-bottom: 15px;
+        
     }
     .imagen__logo{
         max-width: 250px;
@@ -84,7 +91,7 @@
     .link__Carrito{
         padding-left: 15px;
     }
-    .fas{
+    .admin__sidebar__ite .fas{
         border: none;
         font-size: 25px;
         background-color: transparent;
@@ -104,22 +111,26 @@
     .header__navlink:hover {
         font-size: 16px ;
     }
-    .seccion2{
+    .admin__header::after{
+        content: "";
+        position: absolute;
+        bottom: -20px;
+        left: 0;
         height:20px;
+        width: 100%;
         background-color: rgb(221, 85, 89);
-        color: #fff;
-        text-align: center;
     }
-    .main {
+    .admin__main {
         display: flex;
         min-height: calc(100vh - 120px);
+        flex-direction: row;
         /*align-items: flex-start*/
     }
-    .aside__bar {
+    .admin__aside__bar {
         min-width: 300px;
         background-color: rgb(11 76 96);
         transition: width 0.3s linear;
-        min-height: calc(100vh - 120px)
+        min-height: calc(100vh - 100px)
     }
     .sidebar__menu {
         outline: none;
@@ -130,19 +141,19 @@
         cursor: pointer;
         display:none
     }
-    .sidebar__list {
-        padding-top: 40px;
+    .admin__sidebar__list {
+        padding-top: 60px;
         transition: padding-top 0.3s linear, height 0.3s linear;
     }
-    .sidebar__ite {
+    .admin__sidebar__ite {
         padding: 15px 0;
         cursor: pointer;
         transition: background-color 0.5s ease-out;
     }
-    .sidebar__ite:hover {
+    .admin__sidebar__ite:hover {
         background-color: rgb(50, 103, 119);
     }
-    .sidebar__link {
+    .admin__sidebar__link {
         color: #f1f1f1;
         text-decoration: none;
         font-size: 16px;
@@ -152,7 +163,7 @@
         align-items: center;
         gap: 35px;
     }
-    .sidebar__link > .fas {
+    .admin__sidebar__link > .fas {
         color: #fff 
     }
     .main__container {
@@ -299,8 +310,10 @@
         .header__buscador, .mc{
             display: none;
         }
-        .seccion2{
-            height:10px;}
+        .admin__header::after{
+            bottom: 10px;
+            height: 10px;
+        }
         .header__logo, .header__links, .btn__mq2 {
             min-width: 150px;
         }
@@ -326,7 +339,7 @@
             margin-bottom: 20px;
         }
 
-        .aside__bar { 
+        .admin__aside__bar { 
             min-width: 100px;
             height: calc(100vh - 50px)
         }
@@ -337,28 +350,28 @@
         .sidebar__name{
             font-size: 0px;
         }
-        .sidebar__ite {
+        .admin__sidebar__ite {
           padding: 20px 0;
       }
-        .sidebar__link {
+        .admin__sidebar__link {
             gap: unset;
             font-size: 25px;
         }
-        .sidebar__text {
+        .admin__sidebar__text {
             display:none
         }
-        .aside__bar.open {
+        .admin__aside__bar.open {
             width: 300px
         }
-        .aside__bar.open .sidebar__link {
+        .admin__aside__bar.open .admin__sidebar__link {
           gap:10px;
           font-size: 18px;
         }
-        .aside__bar.open .sidebar__text {
+        .admin__aside__bar.open .admin__sidebar__text {
             display:unset;
       }
         
-        .aside__bar.open .sidebar__ite {
+        .admin__aside__bar.open .admin__sidebar__ite {
           padding: 15px 0;
         }
       
@@ -384,17 +397,16 @@
     .header__logo {
         padding-top: 5px;
     }
-    .main {
+    .admin__main {
         flex-direction: column;
-        marker: none;
     }
-    .seccion2{
+    .admin__header::after{
         display: none;}
 
-    .aside__bar {
+    .admin__aside__bar {
         min-width: 100%;
         min-height: unset;
-        height:  calc(100% - 113px);
+        height:  68px;
         padding-bottom: 20px;
     }
     .sidebar__profile {
@@ -409,7 +421,7 @@
    .sidebar__menu {
        display: unset;
    }
-.sidebar__list {
+.admin__sidebar__list {
     width: 100%;
     height: 0;
     overflow: hidden;
@@ -417,11 +429,11 @@
     flex-direction: column;
     padding-top: unset;
 }
-.sidebar__ite {
+.admin__sidebar__ite {
     width: 100%;
     padding: 20px 0;
 }
-.sidebar__link {
+.admin__sidebar__link {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -431,10 +443,15 @@
     padding-left: unset;
     
 }
-.sidebar__text {
+.admin__sidebar__text {
     display: unset;
 }
-.aside__bar.open-mobile .sidebar__list {
+
+.admin__aside__bar.open-mobile{
+    height: 100%;
+}
+
+.admin__aside__bar.open-mobile .admin__sidebar__list {
    height: 300px;
    overflow: unset;
    

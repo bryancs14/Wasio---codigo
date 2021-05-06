@@ -19,54 +19,7 @@ const ClientHomePage = () => {
   return (
     <>
       <main className="main">
-        <aside className="aside__bar ">
-          <nav className="sidebar__nav">
-            <ul className="sidebar__list">
-              <li className="sidebar__ite">
-                <a className="sidebar__link" href="#" data-title="Mujer">
-                  <span>
-                    <span></span>
-                  </span>
-                </a>
-              </li>
-              <li className="sidebar__ite">
-                <a className="sidebar__link" href="#" data-title="Hombre">
-                  <span>
-                    <span></span>
-                  </span>
-                </a>
-              </li>
-              <li className="sidebar__ite">
-                <a className="sidebar__link" href="#" data-title="Tecnología">
-                  <span>
-                    <span></span>
-                  </span>
-                </a>
-              </li>
-              <li className="sidebar__ite">
-                <a className="sidebar__link" href="#" data-title="Hogar">
-                  <span>
-                    <span></span>
-                  </span>
-                </a>
-              </li>
-              <li className="sidebar__ite">
-                <a className="sidebar__link" href="#" data-title="Deporte">
-                  <span>
-                    <span></span>
-                  </span>
-                </a>
-              </li>
-              <li className="sidebar__ite">
-                <a className="sidebar__link" href="#" data-title="Tienda y marcas">
-                  <span>
-                    <span></span>
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </aside>
+        
 
         <figure className="box">
           <img src={banner} alt="Cargando imagen..." />
