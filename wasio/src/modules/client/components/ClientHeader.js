@@ -93,8 +93,8 @@ const ClientHeader = () => {
           <p>BIENVENIDOS A WASIO</p>
         </div>
       </header>
-      <aside className="aside__bar open">
-        <nav className="sidebar__nav">
+      
+        <nav className="sidebar__nav open">
           <ul className="sidebar__list">
             {
               categorias.map((objCategoria, i) => {
@@ -111,7 +111,7 @@ const ClientHeader = () => {
             }
           </ul>
         </nav>
-      </aside>
+      
     </>
   );
 };
