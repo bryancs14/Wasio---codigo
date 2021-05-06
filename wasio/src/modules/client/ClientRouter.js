@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router'
-import ClientFooter from './components/ClientFooter'
-import ClientHeader from './components/ClientHeader'
+import ClientFooter from './../components/ClientFooter'
+import ClientHeader from './../components/ClientHeader'
 import ClientHomePage from './pages/home/ClientHomePage'
 import ProductosPage from './pages/productos/ProductosPage'
 
