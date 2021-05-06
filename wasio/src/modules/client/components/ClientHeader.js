@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useContext, useRef } from "react";
 import { useHistory } from "react-router";
+import CarritoContext from "../../../context/carrito/carritoContext";
 import "../../../styles/Header.css";
 
 const ClientHeader = () => {
 
+const {setTag} = useContext(CarritoContext);
+
+
+const refInputBusqueda = useRef();
 
 const history = useHistory();
 
 const handleSubmit = e => {
-  if (e.keyCode === 13){
-    history.push("/productos")
+  if (e.keyCode === 13 &&
+    refInputBusqueda.current.value.trim() !== ""   
+    ){
+    setTag(refInputBusqueda.current.value.trim());
+    history.push("/productos");
+
   }
 }
 
@@ -28,6 +37,7 @@ const handleSubmit = e => {
                 type="text"
                 placeholder="Buscar"
                 onKeyUp={handleSubmit}
+                ref={refInputBusqueda}
               />
             </div>
           </div>
@@ -45,7 +55,11 @@ const handleSubmit = e => {
           <div class="header__buscador">
             <div class="buscador">
               <button type="submit" class="fas fa-search"></button>
-              <input class="buscar" type="text" placeholder="Buscar" onKeyUp={handleSubmit}/>
+              <input class="buscar" 
+              type="text" 
+              placeholder="Buscar" 
+              onKeyUp={handleSubmit}
+              ref={refInputBusqueda}/>
             </div>
           </div>
 
