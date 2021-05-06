@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./../../../styles/Vista__registro.css";
 
 const AuthRegistroPage = () => {
+
+  const registroVacio = () => {
+    
+  }
+
+  const [registro, setRegistro] = useState()
+
+
   return (
     <main className="main_Vregistro">
       <section className="mainsect_registro">
