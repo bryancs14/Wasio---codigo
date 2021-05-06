@@ -23,13 +23,13 @@ const AdminNavbar = () => {
           <li className="admin__sidebar__ite">
             <a className="admin__sidebar__link" href="">
               <i className="fas fa-plus    "></i>
-              <p className="admin__sidebar__text"> Crear producto </p>
+              <p className="admin__sidebar__text"> Categorias </p>
             </a>
           </li>
           <li className="admin__sidebar__ite">
             <a className="admin__sidebar__link" href="">
               <i className="fas fa-user-plus    "></i>
-              <p className="admin__sidebar__text">Crear marca </p>
+              <p className="admin__sidebar__text"> Marcas </p>
             </a>
           </li>
           <li className="admin__sidebar__ite">

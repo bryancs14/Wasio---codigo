@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getCategorias } from "../../../services/categoriasServices";
 import "../../../styles/Header.css";
 
 const ClientHeader = () => {
+
+  const [categorias, setCategorias] = useState([]);
+
+  useEffect(() => {
+    getCategorias().then(rpta => {
+      if(rpta.request.status === 200) {
+        setCategorias(rpta.data);
+      }
+    })
+  }, [])
+
   return (
     <>
       <header className="header">
@@ -64,36 +76,16 @@ const ClientHeader = () => {
         <div className="header__wrapper seccion2">
           <nav className="header__nav">
             <ul className="header__list">
-              <li>
-                <a href="#" className="header__navlink">
-                  Mujer
-                </a>
-              </li>
-              <li>
-                <a href="#" className="header__navlink">
-                  Hombre
-                </a>
-              </li>
-              <li>
-                <a href="#" className="header__navlink">
-                  Tecnología
-                </a>
-              </li>
-              <li>
-                <a href="#" className="header__navlink">
-                  Hogar
-                </a>
-              </li>
-              <li>
-                <a href="#" className="header__navlink">
-                  Deporte
-                </a>
-              </li>
-              <li>
-                <a href="#" className="header__navlink">
-                  Tienda y marcas
-                </a>
-              </li>
+              {
+                categorias.map((objCategoria, i) => {
+                  return(
+                    <li key={i}>
+                      <a href="#" className="header__navlink">{objCategoria.nomb_categoria}</a>
+                    </li>
+                  );
+                })
+              }
+              
             </ul>
           </nav>
         </div>
@@ -104,52 +96,19 @@ const ClientHeader = () => {
       <aside className="aside__bar open">
         <nav className="sidebar__nav">
           <ul className="sidebar__list">
-            <li className="sidebar__ite">
-              <a className="sidebar__link" href="#" data-title="Mujer">
-                <span>
-                  <span></span>
-                </span>
-              </a>
-            </li>
-            <li className="sidebar__ite">
-              <a className="sidebar__link" href="#" data-title="Hombre">
-                <span>
-                  <span></span>
-                </span>
-              </a>
-            </li>
-            <li className="sidebar__ite">
-              <a className="sidebar__link" href="#" data-title="Tecnología">
-                <span>
-                  <span></span>
-                </span>
-              </a>
-            </li>
-            <li className="sidebar__ite">
-              <a className="sidebar__link" href="#" data-title="Hogar">
-                <span>
-                  <span></span>
-                </span>
-              </a>
-            </li>
-            <li className="sidebar__ite">
-              <a className="sidebar__link" href="#" data-title="Deporte">
-                <span>
-                  <span></span>
-                </span>
-              </a>
-            </li>
-            <li className="sidebar__ite">
-              <a
-                className="sidebar__link"
-                href="#"
-                data-title="Tienda y marcas"
-              >
-                <span>
-                  <span></span>
-                </span>
-              </a>
-            </li>
+            {
+              categorias.map((objCategoria, i) => {
+                return (
+                  <li className="sidebar__ite" key={i}>
+                    <a className="sidebar__link" href="#" data-title={objCategoria.nomb_categoria}>
+                      <span>
+                        <span></span>
+                      </span>
+                    </a>
+                  </li>
+                );
+              })
+            }
           </ul>
         </nav>
       </aside>
