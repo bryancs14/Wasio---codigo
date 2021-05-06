@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getCategorias } from "../../../services/categoriasServices";
-import "../../../styles/Header.css";
+import { getCategorias } from "../../services/categoriasServices";
+import "../../styles/Header.css";
 
 const ClientHeader = () => {
 

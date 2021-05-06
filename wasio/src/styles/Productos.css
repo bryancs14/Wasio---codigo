@@ -1,0 +1,111 @@
+    .section__listaproductos{
+        margin: 40px 40px;
+        width: 100%;
+        box-shadow: 2px 2px 5px #999;
+        background-color: rgb(221 231 234);
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+    .primeraparte__lp {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+    }
+    .title__listaproductos {
+        color: rgb(221, 85, 89);
+        font-size: 25px;   
+    }
+    .btn__admin__listaproductos {
+        display: flex;
+        gap: 10px;
+    }
+    .btnlp1 {
+        background-color:#1e92cc  ;
+    }
+    .btnlp2 {
+        background-color: #b2b1b0;
+    }
+    .btnlp3 {
+        background-color: #f46a6c;
+    }
+    .btn_admin_lp {
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 5px;
+        
+    }
+    .btn_admin_lp > .fas:hover {
+        font-size: 25px;
+    }
+    
+    .btn_admin_lp > .fas {
+       color:#fff;
+       font-size: 20px;
+       transition: font_size 0.5s linear;
+    }
+    .sec_subtitlefaslist {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        color:  rgb(11, 76, 96);;
+        align-items: center;
+        padding: 10px 0 10px 20px;
+        margin-top: 10px;
+        border-top: 2px solid  #aaa;;
+    }
+    .sec_subtitlefaslist > h2, .sec_subtitlefaslist > .fas {
+        font-size: 18px;
+    }
+    
+    .section__tableproductos {
+        margin: 10px;
+        border: 1px solid #000;
+        width: 97%;
+        border-collapse: collapse;
+        
+    }
+    .section__tableproductos th, .section__tableproductos td {
+        border: 1px solid #000;
+        padding: 10px;
+        text-align: center;
+      }
+    .section__tableproductos .fas {
+        font-size: 22px;
+        color: #1e92cc ;
+        filter: none;
+        transition: filter 0.3s linear;
+    }
+    .section__tableproductos button {
+        border: none;
+        background-color: rgb(221 231 234);;
+    }
+    .section__tableproductos .fa-trash  {
+        color: #f46a6c;
+    }
+    .section__tableproductos .fas:hover {
+        filter: grayscale(50%);
+    }
+
+ @media (max-width:900px) {
+      .section__tableproductos tr th:nth-child(3), .section__tableproductos tr td:nth-child(3) {
+          display: none;
+      }
+
+    .section__listaproductos{
+        margin: 15px 15px;
+    }
+  }
+    
+    @media (max-width:480px) {
+.section__listaproductos{
+    margin: 0px 0px;
+}
+
+    }
+    
+    
+  
