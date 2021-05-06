@@ -43,7 +43,7 @@ const ClientHeader = () => {
 
             <div className="header__buscador">
               <div className="buscador">
-                <button type="submit" className="fas fa-search"></button>
+                <i  className="fas fa-search"></i>
                 <input className="buscar" type="text" placeholder="Buscar" />
               </div>
             </div>
@@ -51,13 +51,13 @@ const ClientHeader = () => {
             <div className="header__links">
               <li>
                 <a href="#" className="lih link__Micuenta">
-                  <button className="fas fa-user"></button>
+                  <i className="fas fa-user"></i>
                   <p className="text__header__link mc">Iniciar Sesión</p>
                 </a>
               </li>
               <li>
                 <a href="#" className="lih link__Carrito">
-                  <button className="fas fa-shopping-cart"></button>
+                  <i className="fas fa-shopping-cart"></i>
                   <div className="car__div">
                     <p
                       className="text__header__link car"
@@ -93,8 +93,8 @@ const ClientHeader = () => {
           <p>BIENVENIDOS A WASIO</p>
         </div>
       </header>
-      <aside className="aside__bar open">
-        <nav className="sidebar__nav">
+      
+        <nav className="sidebar__nav open">
           <ul className="sidebar__list">
             {
               categorias.map((objCategoria, i) => {
@@ -107,11 +107,11 @@ const ClientHeader = () => {
                     </a>
                   </li>
                 );
-              })
-            }
+              })}
+            
           </ul>
         </nav>
-      </aside>
+      
     </>
   );
 };
