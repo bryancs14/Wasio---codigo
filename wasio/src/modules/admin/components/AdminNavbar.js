@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const AdminNavbar = () => {
   return (
@@ -9,34 +10,34 @@ const AdminNavbar = () => {
       <nav className="sidebar__nav">
         <ul className="admin__sidebar__list">
           <li className="admin__sidebar__ite">
-            <a className="admin__sidebar__link" href="">
+            <NavLink className="admin__sidebar__link" to="/admin">
               <i className="fas fa-desktop "></i>
-              <p className="admin__sidebar__text"> Registro de ventas </p>
-            </a>
+              <p className="admin__sidebar__text">Registro de ventas</p>
+            </NavLink>
           </li>
           <li className="admin__sidebar__ite">
-            <a className="admin__sidebar__link" href="">
+            <NavLink className="admin__sidebar__link" to="/admin/producto">
               <i className="fas fa-th    "></i>
-              <p className="admin__sidebar__text"> Productos </p>
-            </a>
+              <p className="admin__sidebar__text">Productos</p>
+            </NavLink>
           </li>
           <li className="admin__sidebar__ite">
-            <a className="admin__sidebar__link" href="">
+            <NavLink className="admin__sidebar__link" to="/admin/categoria">
               <i className="fas fa-plus    "></i>
-              <p className="admin__sidebar__text"> Categorias </p>
-            </a>
+              <p className="admin__sidebar__text">Categorias</p>
+            </NavLink>
           </li>
           <li className="admin__sidebar__ite">
-            <a className="admin__sidebar__link" href="">
+            <NavLink className="admin__sidebar__link" to="/admin/marca">
               <i className="fas fa-user-plus    "></i>
-              <p className="admin__sidebar__text"> Marcas </p>
-            </a>
+              <p className="admin__sidebar__text">Marcas</p>
+            </NavLink>
           </li>
           <li className="admin__sidebar__ite">
-            <a className="admin__sidebar__link" href="">
+            <NavLink className="admin__sidebar__link" to="/admin/settings">
               <i className="fas fa-sliders-h    "></i>
-              <p className="admin__sidebar__text"> Ajustes </p>
-            </a>
+              <p className="admin__sidebar__text">Ajustes</p>
+            </NavLink>
           </li>
         </ul>
       </nav>

@@ -16,7 +16,7 @@ const HomeSectionCategoria = ({objCategoria}) => {
   }, [])
 
   return (
-    <section>
+    <section className="categoria__section">
       <div className="titulo__section">
         <p>{objCategoria.nomb_categoria}</p>
         <figure>

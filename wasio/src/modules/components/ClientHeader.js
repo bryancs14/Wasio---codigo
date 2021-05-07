@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { getCategorias } from "../../services/categoriasServices";
 import "../../styles/Header.css";
 
@@ -100,11 +101,11 @@ const ClientHeader = () => {
               categorias.map((objCategoria, i) => {
                 return (
                   <li className="sidebar__ite" key={i}>
-                    <a className="sidebar__link" href="#" data-title={objCategoria.nomb_categoria}>
+                    <NavLink className="sidebar__link" to="/" data-title={objCategoria.nomb_categoria}>
                       <span>
                         <span></span>
                       </span>
-                    </a>
+                    </NavLink>
                   </li>
                 );
               })}

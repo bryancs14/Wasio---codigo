@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom"
 import { getCategorias } from "../../../../services/categoriasServices";
 import { getMarcas } from "../../../../services/marcasService";
 import { postProducto } from "../../../../services/productosService";
@@ -16,6 +17,8 @@ const AdminCrearProducto = () => {
     detalle: {talla: "aaa"},
     imagen: ""
   };
+
+  const history = useHistory();
 
   const [formulario, setFormulario] = useState(formularioVacio);
   const [categorias, setCategorias] = useState([]);
@@ -41,7 +44,7 @@ const AdminCrearProducto = () => {
   }
 
   const hangleCancel = () => {
-
+    history.replace("/admin/producto");
   }
 
   useEffect(() => {

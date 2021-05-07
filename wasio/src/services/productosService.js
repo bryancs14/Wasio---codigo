@@ -35,3 +35,28 @@ export const postProducto = async (objProducto) => {
 //   )
 //   return rpta;
 // }
+
+export const deleteProductoById = async (id_producto) => {
+  const rpta = await axios.delete(
+    URL_BACKEND + "/producto/"+ id_producto,
+    {
+      headers: {
+        "Content-type": "application/json"
+      }
+    }
+  )
+  return rpta;
+}
+
+export const putProductoById = async ({objProducto}) => {
+  const rpta = await axios.put(
+    URL_BACKEND + "/producto/"+ objProducto.id,
+    {...objProducto},
+    {
+      headers: {
+        "Content-type": "application/json"
+      }
+    }
+  )
+  return rpta;
+}
