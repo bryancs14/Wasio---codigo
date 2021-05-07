@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { getCategorias } from "../../../../services/categoriasServices";
 import { getMarcas } from "../../../../services/marcasService";
-import { getProductoById, postProducto } from "../../../../services/productosService";
+import {
+  getProductoById,
+  postProducto,
+} from "../../../../services/productosService";
 import AdminNavbar from "../../components/AdminNavbar";
 
 const AdminCrearProducto = () => {
@@ -19,7 +22,7 @@ const AdminCrearProducto = () => {
   };
 
   const history = useHistory();
-  const {id_producto} = useParams();
+  const { id_producto } = useParams();
 
   const [formulario, setFormulario] = useState(formularioVacio);
   const [categorias, setCategorias] = useState([]);
@@ -30,7 +33,6 @@ const AdminCrearProducto = () => {
       ...formulario,
       [e.target.name]: e.target.value,
     });
-    console.log(formulario);
   };
 
   const hangleSubmit = (e) => {
@@ -49,12 +51,12 @@ const AdminCrearProducto = () => {
   };
 
   useEffect(() => {
-    if(id_producto) {
-      getProductoById(id_producto).then(rpta => {
+    if (id_producto) {
+      getProductoById(id_producto).then((rpta) => {
         if (rpta.request.status === 200) {
           setFormulario(rpta.data);
-        } 
-      })
+        }
+      });
     }
     getCategorias().then((rpta) => {
       if (rpta.request.status === 200) {
@@ -73,10 +75,17 @@ const AdminCrearProducto = () => {
       <AdminNavbar />
       <section className="section__crear">
         <form className="Crear__producto" onSubmit={hangleSubmit}>
-          <div className="input__container2">
-            <label htmlFor="">ID:</label>
-            <input className="input_1" type="text" value={id_producto} disabled/>
-          </div>
+          {id_producto ? (
+            <div className="input__container2">
+              <label htmlFor="">ID:</label>
+              <input
+                className="input_1"
+                type="text"
+                value={id_producto}
+                disabled
+              />
+            </div>
+          ) : null}
           <div className="input__container1">
             <label htmlFor="">Nombre:</label>
             <input

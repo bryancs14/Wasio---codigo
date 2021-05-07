@@ -1,30 +1,31 @@
-import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { deleteProductoById, getProductos } from "../../../../services/productosService";
-import AdminNavbar from "../../components/AdminNavbar";
-import "./../../../../styles/Productos.css";
+import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router';
+import { deleteMarcaById, getMarcas } from '../../../../services/marcasService';
+import AdminNavbar from '../../components/AdminNavbar'
 
-const AdminProductoPage = () => {
-  const [productos, setProductos] = useState([]);
+const AdminMarcaPage = () => {
+
+  const history = useHistory();
+  const [marcas, setMarcas] = useState([]);
 
   let borrados = false;
   let borrado = false;
 
-  const traerProductos = () => {
-    getProductos().then((rpta) => {
-      if (rpta.request.status === 200) {
-        setProductos(rpta.data);
+  const traerMarcas = () => {
+    getMarcas().then(rpta => {
+      if(rpta.request.status === 200) {
+        setMarcas(rpta.data);
       }
     });
-  };
+  }
 
   useEffect(() => {
-    traerProductos();
-  }, []);
+    traerMarcas();
+  }, [])
 
   const deleteAll = () => {
-    productos.forEach((objProducto => {
-      deleteProductoById(objProducto.id).then(rpta => {
+    marcas.forEach((objMarca => {
+      deleteMarcaById(objMarca.id).then(rpta => {
         if(rpta.request.status === 200){
           borrados = true;
         } else {
@@ -37,21 +38,20 @@ const AdminProductoPage = () => {
     } else {
       console.log("No se pudo borrar todos los productos");
     }
-    traerProductos();
+    traerMarcas();
   }
 
-  const deleteProducto = (id_producto) => {
-    deleteProductoById(id_producto).then(rpta => {
+  const deleteMarca = (id_marca) => {
+    deleteMarcaById(id_marca).then(rpta => {
       if(rpta.request.status === 200){
         borrado = true;
       } else {
         borrado = false;
       }
     })
-    traerProductos();
+    traerMarcas();
   }
 
-  const history = useHistory();
   return (
     <main className="admin__main">
       <AdminNavbar />
@@ -70,7 +70,7 @@ const AdminProductoPage = () => {
             <button
               className="btn_admin_lp btnlp2"
               onClick={() => {
-                traerProductos();
+                traerMarcas();
               }}
             >
               <i className="fas fa-sync"></i>
@@ -94,41 +94,31 @@ const AdminProductoPage = () => {
                   <input type="checkbox" />
                 </th>
                 <th>Id</th>
-                <th>Producto</th>
-                <th>Categoria</th>
                 <th>Marca</th>
-                <th>Stock</th>
-                <th>Precio</th>
-                <th>% Descuento</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
               </tr>
             </thead>
             <tbody>
               {
-                productos.map((objProducto, i) => {
+                marcas.map((objMarca, i) => {
                   return (
                     <tr key={i}>
                 <td>
                   <input type="checkbox" />
                 </td>
-                <td>{objProducto.id}</td>
-                <td>{objProducto.nombre}</td>
-                <td>{objProducto.cat_id}</td>
-                <td>{objProducto.marca_id}</td>
-                <td>{objProducto.stock}</td>
-                <td>{objProducto.precio}</td>
-                <td>{objProducto.porc_descuento}</td>
+                <td>{objMarca.id}</td>
+                <td>{objMarca.nomb_marca}</td>
                 <td>
                   <button type="button" onClick={() => {
-                    history.push("/admin/producto/editar/"+objProducto.id)
+                    history.push("/admin/marca/editar/"+objMarca.id)
                   }}>
                     <i className="fas fa-edit"></i>
                   </button>
                 </td>
                 <td>
                   <button onClick={() => {
-                    deleteProducto(objProducto.id);
+                    deleteMarca(objMarca.id);
                   }}>
                     <i className="fas fa-trash"></i>
                   </button>
@@ -142,6 +132,7 @@ const AdminProductoPage = () => {
         </div>
       </section>
     </main>
-  );
-};
-export default AdminProductoPage;
+  )
+}
+
+export default AdminMarcaPage
