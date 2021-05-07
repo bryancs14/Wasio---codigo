@@ -19,6 +19,11 @@ export const postProducto = async (objProducto) => {
   return rpta;
 }
 
+export const getProductoById = async (id_producto) => {
+  const rpta = await axios.get(URL_BACKEND + "/producto/"+id_producto);
+  return rpta;
+} 
+
 // export const postUploadImagenByProductoId = async (file, producto_id) => {
 //   let miFormData = new FormData();
 //   miFormData.append("imagen", file);

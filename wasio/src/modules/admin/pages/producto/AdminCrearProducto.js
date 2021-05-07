@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { getCategorias } from "../../../../services/categoriasServices";
 import { getMarcas } from "../../../../services/marcasService";
-import { postProducto } from "../../../../services/productosService";
+import { getProductoById, postProducto } from "../../../../services/productosService";
 import AdminNavbar from "../../components/AdminNavbar";
 
 const AdminCrearProducto = () => {
@@ -14,11 +14,12 @@ const AdminCrearProducto = () => {
     descripcion: "",
     precio: 0,
     porc_descuento: 0,
-    detalle: { talla: "aaa" },
+    detalle: {},
     imagen: "",
   };
 
   const history = useHistory();
+  const {id_producto} = useParams();
 
   const [formulario, setFormulario] = useState(formularioVacio);
   const [categorias, setCategorias] = useState([]);
@@ -48,6 +49,13 @@ const AdminCrearProducto = () => {
   };
 
   useEffect(() => {
+    if(id_producto) {
+      getProductoById(id_producto).then(rpta => {
+        if (rpta.request.status === 200) {
+          setFormulario(rpta.data);
+        } 
+      })
+    }
     getCategorias().then((rpta) => {
       if (rpta.request.status === 200) {
         setCategorias(rpta.data);
@@ -65,6 +73,10 @@ const AdminCrearProducto = () => {
       <AdminNavbar />
       <section className="section__crear">
         <form className="Crear__producto" onSubmit={hangleSubmit}>
+          <div className="input__container2">
+            <label htmlFor="">ID:</label>
+            <input className="input_1" type="text" value={id_producto} disabled/>
+          </div>
           <div className="input__container1">
             <label htmlFor="">Nombre:</label>
             <input
