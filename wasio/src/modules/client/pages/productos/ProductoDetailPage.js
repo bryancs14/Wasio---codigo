@@ -1,9 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductoById } from "../../../../services/productosService";
 import "../../../../styles/ProductoDetail.css";
+import CarritoContext from "../../../../context/carrito/carritoContext";
+
+
+
+
+
 
 const ProductoDetailPage = () => {
+
+  const {Toast, agregarAlCarrito} = useContext(CarritoContext);
 
     const refSrcImagen = useRef();
 
@@ -90,7 +98,14 @@ const ProductoDetailPage = () => {
                   <option value="">2</option>
                   <option value="">3</option>
                 </select>
-                <button class="btn-agregarcarrito">  AGREGAR AL CARRO</button>
+                <button class="btn-agregarcarrito"
+                onClick={() => {
+                  Toast.fire({
+                    icon: 'success',
+                    title: 'Agregado al carrito'
+                  });
+                  agregarAlCarrito(objProducto);
+                }}>  AGREGAR AL CARRO</button>
               </div>
             </div>
           </div>

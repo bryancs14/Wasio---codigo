@@ -2,10 +2,11 @@ import React, { useContext, useRef } from "react";
 import { useHistory } from "react-router";
 import CarritoContext from "../../../context/carrito/carritoContext";
 import "../../../styles/Header.css";
+import {NavLink} from 'react-router-dom'
 
 const ClientHeader = () => {
 
-const {setTag} = useContext(CarritoContext);
+const {setTag, carrito} = useContext(CarritoContext);
 
 
 const refInputBusqueda = useRef();
@@ -13,15 +14,15 @@ const refInputBusqueda = useRef();
 const history = useHistory();
 
 const handleSubmit = e => {
+  setTag("");
   if (e.keyCode === 13 &&
     refInputBusqueda.current.value.trim() !== ""   
     ){
     setTag(refInputBusqueda.current.value.trim());
     history.push("/productos");
-
+    
   }
 }
-
 
 
   return (
@@ -43,6 +44,7 @@ const handleSubmit = e => {
           </div>
 
           <div class="header__logo">
+            <NavLink to="/">
             <figure class="figure__logo">
               <img
                 class="imagen__logo"
@@ -50,6 +52,7 @@ const handleSubmit = e => {
                 alt=""
               />
             </figure>
+            </NavLink>
           </div>
 
           <div class="header__buscador">
@@ -72,10 +75,9 @@ const handleSubmit = e => {
             </li>
             <li>
               <a href="#" class="lih link__Carrito">
-                <button class="fas fa-shopping-cart"></button>
+                <NavLink to="/carrito"><button class="fas fa-shopping-cart"></button></NavLink>
                 <div class="car__div">
-                  <p class="text__header__link car" id="Carrito__contador">
-                    0
+                  <p class="text__header__link car" id="Carrito__contador">{carrito.length}
                   </p>
                 </div>
               </a>
