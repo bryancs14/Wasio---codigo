@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router";
 import CarritoState from "../../context/carrito/carritoState";
-import ClientHeader from "./components/ClientHeader";
+import ClientHeader from "./../components/ClientHeader";
 import CarritoPage from "./pages/carrito/CarritoPage";
 
 import ClientHomePage from "./pages/home/ClientHomePage";
@@ -11,8 +11,7 @@ import ProductosPage from "./pages/productos/ProductosPage";
 import TiendaDetailPage from "./pages/tiendas/TiendaDetailPage";
 import TiendasPage from "./pages/tiendas/TiendasPage";
 import ClientFooter from './../components/ClientFooter'
-import ClientHomePage from './pages/home/ClientHomePage'
-import ProductosPage from './pages/productos/ProductosPage'
+
 
 const ClientRouter = () => {
   return (
