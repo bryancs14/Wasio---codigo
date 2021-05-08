@@ -1,10 +1,13 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import CarritoContext from '../../../../context/carrito/carritoContext';
 import "../../../../styles/PagarPage.css";
+import PagoModal from '../../components/PagoModal';
 
 const PagarPage = () => {
 
-    const { carrito} = useContext(CarritoContext);
+    const {carrito} = useContext(CarritoContext);
+
+    const [mostrar, setMostrar] = useState(false);
 
     let total = carrito.reduce((sumatoria, objProducto) => {
         return sumatoria + objProducto.precio * objProducto.cantidad;
@@ -261,7 +264,9 @@ const PagarPage = () => {
                   <input class="input-dscto" type="text" />
                   <button class="boton-descuento">APLICAR</button>
                 </div>
-                <button class="boton-pago">CONTINUAR</button>
+                <button class="boton-pago" onClick={() => {
+                    setMostrar(true);
+                }}>CONTINUAR</button>
               </div>
             </div>
           </aside>
@@ -281,6 +286,9 @@ const PagarPage = () => {
         </div>
         </section>
       </div>
+      <PagoModal mostrar={mostrar}
+      setMostrar={setMostrar}
+      carrito={carrito}/>
     </main>
     )
 }
