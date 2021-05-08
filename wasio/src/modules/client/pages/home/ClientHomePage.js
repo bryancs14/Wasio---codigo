@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./../../../../styles/home.css"
 import banner from "./../../../../assets//img/main__banner.png";
 import HomeSectionCategoria from "./components/HomeSectionCategoria";
-import { getCategorias } from "../../../../services/categoriasServices";
+import { getCategorias } from "../../../../services/categoriasService";
 
 const ClientHomePage = () => {
 

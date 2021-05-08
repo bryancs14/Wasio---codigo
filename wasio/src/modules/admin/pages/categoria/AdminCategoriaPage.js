@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router';
-import { getCategorias, deleteCategoriaById } from '../../../../services/categoriasServices'
+import { getCategorias, deleteCategoriaById } from '../../../../services/categoriasService'
 import AdminNavbar from '../../components/AdminNavbar';
 
 const AdminCategoriaPage = () => {

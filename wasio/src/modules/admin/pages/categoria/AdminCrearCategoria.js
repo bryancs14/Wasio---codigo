@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router';
-import { getCategoriaById, postCategoria, putCategoriaById, putMarcaById } from '../../../../services/categoriasServices';
+import { getCategoriaById, postCategoria, putCategoriaById } from '../../../../services/categoriasService';
 import AdminNavbar from '../../components/AdminNavbar'
 
 const AdminCrearCategoria = () => {

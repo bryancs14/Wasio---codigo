@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { getCategorias } from "../../../../services/categoriasServices";
+import { getCategorias } from "../../../../services/categoriasService";
 import { getMarcas } from "../../../../services/marcasService";
 import {
   getProductoById,

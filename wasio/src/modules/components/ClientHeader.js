@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import { getCategorias } from "../../services/categoriasServices";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import AuthContext from "../../context/authContext";
+import { getCategorias } from "../../services/categoriasService";
 import "../../styles/Header.css";
 
 const ClientHeader = () => {
 
   const [categorias, setCategorias] = useState([]);
+
+  const {usu_nom} = useContext(AuthContext);
 
   useEffect(() => {
     getCategorias().then(rpta => {
@@ -51,10 +54,17 @@ const ClientHeader = () => {
 
             <div className="header__links">
               <li>
-                <a href="#" className="lih link__Micuenta">
-                  <i className="fas fa-user"></i>
-                  <p className="text__header__link mc">Iniciar Sesión</p>
-                </a>
+                {
+                  usu_nom ?
+                  <a href="#" className="lih link__Micuenta">
+                    <i className="fas fa-user"></i>
+                    <p className="text__header__link mc">{usu_nom}</p>
+                  </a> :
+                  <Link to="/auth/login" className="lih link__Micuenta">
+                    <i className="fas fa-user"></i>
+                    <p className="text__header__link mc">Iniciar Sesión</p>
+                  </Link>
+                }
               </li>
               <li>
                 <a href="#" className="lih link__Carrito">

@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import AuthContext from "../../../context/authContext";
 
 const AdminHeader = () => {
+
+  const {usu_nom} = useContext(AuthContext);
+
   return (
     <header className="admin__header">
       <div className="admin__header__main">
@@ -16,7 +20,7 @@ const AdminHeader = () => {
         <div className="header__links">
           <a href="#" className="lih link__Micuenta">
             <i className="fas fa-user"></i>
-            <p className="text__header__link mc">Nombre de usuario</p>
+            <p className="text__header__link mc">{usu_nom}</p>
           </a>
         </div>
       </div>
