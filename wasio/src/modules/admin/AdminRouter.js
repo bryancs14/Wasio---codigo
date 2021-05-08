@@ -2,12 +2,14 @@ import React from "react";
 import { Route, Switch } from "react-router";
 import AdminHeader from "./components/AdminHeader";
 import "./../../styles/Admin.css"
+import "./../../styles/dashboard.css"
 import AdminCrearProducto from "./pages/producto/AdminCrearProducto";
 import AdminProductoPage from "./pages/producto/AdminProductoPage";
 import AdminCrearMarca from "./pages/marca/AdminCrearMarca";
 import AdminMarcaPage from "./pages/marca/AdminMarcaPage";
 import AdminCrearCategoria from "./pages/categoria/AdminCrearCategoria";
 import AdminCategoriaPage from "./pages/categoria/AdminCategoriaPage";
+import AdminDashboardPage from "./pages/dashboard/AdminDashboardPage";
 
 const AdminRouter = () => {
   return (
@@ -40,6 +42,9 @@ const AdminRouter = () => {
         </Route>
         <Route path="/admin/producto" exact>
           <AdminProductoPage />
+        </Route>
+        <Route path="/admin">
+          <AdminDashboardPage />
         </Route>
       </Switch>
     </>

@@ -12,7 +12,7 @@ const AdminNavbar = () => {
           <li className="admin__sidebar__ite">
             <NavLink className="admin__sidebar__link" to="/admin">
               <i className="fas fa-desktop "></i>
-              <p className="admin__sidebar__text">Registro de ventas</p>
+              <p className="admin__sidebar__text">Dashboard</p>
             </NavLink>
           </li>
           <li className="admin__sidebar__ite">

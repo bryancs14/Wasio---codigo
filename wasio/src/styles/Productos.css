@@ -90,6 +90,10 @@
         filter: grayscale(50%);
     }
 
+    .admin__marca__logo {
+        width: 150px;
+    }
+
  @media (max-width:900px) {
       .section__tableproductos tr th:nth-child(3), .section__tableproductos tr td:nth-child(3) {
           display: none;

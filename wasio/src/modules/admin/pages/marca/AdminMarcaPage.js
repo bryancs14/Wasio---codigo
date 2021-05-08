@@ -95,6 +95,7 @@ const AdminMarcaPage = () => {
                 </th>
                 <th>Id</th>
                 <th>Marca</th>
+                <th>Logo</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
               </tr>
@@ -109,6 +110,7 @@ const AdminMarcaPage = () => {
                 </td>
                 <td>{objMarca.id}</td>
                 <td>{objMarca.nomb_marca}</td>
+                <td><img className="admin__marca__logo" src={objMarca.img_logo} alt="" /></td>
                 <td>
                   <button type="button" onClick={() => {
                     history.push("/admin/marca/editar/"+objMarca.id)
