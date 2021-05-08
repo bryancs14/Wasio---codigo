@@ -1,25 +1,69 @@
-import React, { useContext, useState } from 'react'
-import CarritoContext from '../../../../context/carrito/carritoContext';
+import React, { useContext, useRef, useState } from "react";
+import CarritoContext from "../../../../context/carrito/carritoContext";
 import "../../../../styles/PagarPage.css";
-import PagoModal from '../../components/PagoModal';
+import PagoModal from "../../components/PagoModal";
 
 const PagarPage = () => {
+  const { carrito } = useContext(CarritoContext);
 
-    const {carrito} = useContext(CarritoContext);
+  const [mostrar, setMostrar] = useState(false);
 
-    const [mostrar, setMostrar] = useState(false);
+  let total = carrito.reduce((sumatoria, objProducto) => {
+    return sumatoria + objProducto.precio * objProducto.cantidad;
+  }, 0);
 
-    let total = carrito.reduce((sumatoria, objProducto) => {
-        return sumatoria + objProducto.precio * objProducto.cantidad;
-      }, 0);
+  let fecha = new Date();
 
+  let fechaPedido = fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear();
 
-    return (
-        <main>
+  const formRef1 = useRef();
+  const formRef2 = useRef();
+
+  const [formulario, setFormulario] = useState({
+    nombre: "",
+    apellido: "",
+    direccion: "",
+    referencia: "",
+    telefono: 0,
+    pais: "Perú",
+    departamento: "Lima",
+    provincia: "Lima",
+    distrito: "0",
+  });
+
+  // const [formulario2, setFormulario2] = useState({
+  //   nombre: "",
+  //   apellido: "",
+  //   direccion: "",
+  //   referencia: "",
+  //   telefono: 0,
+  //   pais: "Perú",
+  //   departamento: "Lima",
+  //   provincia: "Lima",
+  //   distrito: "0",
+  //   email: 
+  // });
+
+  const handleChange = (e) => {
+    setFormulario({
+      ...formulario,
+      [e.target.name]: e.target.value,
+    });
+    console.log(formulario);
+  };
+
+  const handleSubmit = (e) => {
+    console.log("AAAAA");
+  };
+
+  return (
+    <main>
       <div class="contenedor-wraper">
         <section>
           <div>
-            <p><a href="#">Inicio</a> / <span>Caja</span></p>
+            <p>
+              <a href="#">Inicio</a> / <span>Caja</span>
+            </p>
           </div>
         </section>
         <section class="contenedor-principal">
@@ -32,48 +76,108 @@ const PagarPage = () => {
                   <section class="seccion-formulario">
                     <div class="div-formulario">
                       <label for="">Nombre (*):</label>
-                      <input type="text" class="input-formulario" />
+                      <input
+                        type="text"
+                        class="input-formulario"
+                        required
+                        name="nombre"
+                        onChange={handleChange}
+                      />
                     </div>
                     <div class="div-formulario">
                       <label for="">Apellido (*):</label>
-                      <input type="text" class="input-formulario" />
+                      <input
+                        type="text"
+                        class="input-formulario"
+                        required
+                        name="apellido"
+                        onChange={handleChange}
+                      />
                     </div>
                     <div class="div-formulario">
                       <label for="">Dirección (*):</label>
-                      <input type="text" class="input-formulario" />
+                      <input
+                        type="text"
+                        class="input-formulario"
+                        required
+                        name="direccion"
+                        onChange={handleChange}
+                      />
                     </div>
                     <div class="div-formulario">
                       <label for="">Referencia:</label>
-                      <input type="text" class="input-formulario" />
+                      <input
+                        type="text"
+                        name="referencia"
+                        onChange={handleChange}
+                        class="input-formulario"
+                      />
                     </div>
                     <div class="div-formulario">
                       <label for="">Teléfono (*):</label>
-                      <input type="text" class="input-formulario" />
+                      <input
+                        type="text"
+                        class="input-formulario"
+                        name="telefono"
+                        required
+                        onChange={handleChange}
+                      />
                     </div>
                   </section>
                   <section class="seccion-formulario">
                     <div class="div-formulario">
                       <label for="">País (*):</label>
-                      <select name="" id="" class="input-formulario">
-                        <option value="">Lima</option>
+                      <select
+                        id=""
+                        class="input-formulario"
+                        value={formulario.pais}
+                        name="pais"
+                        onChange={handleChange}
+                      >
+                        <option key="1" value="Perú">
+                          Perú
+                        </option>
                       </select>
                     </div>
                     <div class="div-formulario">
                       <label for="">Departamento:</label>
-                      <select name="" id="" class="input-formulario">
-                        <option value="">Lima</option>
+                      <select
+                        name="departamento"
+                        id=""
+                        class="input-formulario"
+                        value={formulario.departamento}
+                      >
+                        <option value="Lima">Lima</option>
                       </select>
                     </div>
                     <div class="div-formulario">
                       <label for="">Provincia:</label>
-                      <select name="" id="" class="input-formulario">
-                        <option value="">Lima</option>
+                      <select
+                        name="provincia"
+                        id=""
+                        class="input-formulario"
+                        value={formulario.provincia}
+                      >
+                        <option value="Lima">Lima</option>
                       </select>
                     </div>
                     <div class="div-formulario">
                       <label for="">Distrito:</label>
-                      <select name="" id="" class="input-formulario">
-                        <option value="">Lima</option>
+                      <select
+                        name="distrito"
+                        id=""
+                        class="input-formulario"
+                        onChange={handleChange}
+                      >
+                        <option value="0">Seleccione</option>
+                        <option value="Cercado de Lima">Cercado de Lima</option>
+                        <option value="La Victoria">La Victoria</option>
+                        <option value="San Martín de Porres">
+                          San Martín de Porres
+                        </option>
+                        <option value="El Agustino">El Agustino</option>
+                        <option value="Pueblo Libre">Pueblo Libre</option>
+                        <option value="Breña">Breña</option>
                       </select>
                     </div>
                   </section>
@@ -91,11 +195,11 @@ const PagarPage = () => {
                   <div class="radio-bf">
                     <div class="radio-checkbox">
                       <label for="">Boleta</label>
-                      <input type="radio" value="" name="TipodePago"/>
+                      <input type="radio" value="" name="TipodePago" />
                     </div>
                     <div class="radio-checkbox">
                       <label for="">Factura</label>
-                      <input type="radio" value="" name="TipodePago"/>
+                      <input type="radio" value="" name="TipodePago" />
                     </div>
                   </div>
                   <div class="division-formulario form-superior">
@@ -170,17 +274,16 @@ const PagarPage = () => {
             <section>
               <div class="radio-checkbox">
                 <input type="checkbox" name="" id="" />
-                <label for=""
-                  >Si, acepto brindar mis datos personales y estoy de acuerdo
-                  con los términos y condiciones.
+                <label for="">
+                  Si, acepto brindar mis datos personales y estoy de acuerdo con
+                  los términos y condiciones.
                 </label>
               </div>
               <div class="radio-checkbox">
                 <input type="checkbox" name="" id="" />
-                <label for=""
-                  >Acepto recibir comunicaciones y promociones de la
-                  marca.</label
-                >
+                <label for="">
+                  Acepto recibir comunicaciones y promociones de la marca.
+                </label>
               </div>
             </section>
             <div>
@@ -188,7 +291,7 @@ const PagarPage = () => {
               <div class="contenedor-formadepago">
                 <div class="contorno-cabecera-pago">
                   <div class="cabecera-pago">
-                    <input type="radio" name="" id="" />
+                    <input type="radio" name="modo-pago" id="" />
                     <img
                       class="img_pago"
                       src="https://geozevallos.github.io/WasioPlace/src/img/bancos.png"
@@ -211,7 +314,7 @@ const PagarPage = () => {
               <div class="contenedor-formadepago">
                 <div class="contorno-cabecera-pago">
                   <div class="cabecera-pago">
-                    <input type="radio" name="" id="" />
+                    <input type="radio" name="modo-pago" id="" />
                     <img
                       class="img_pago"
                       src="https://geozevallos.github.io/WasioPlace/src/img/moneda.png"
@@ -254,7 +357,7 @@ const PagarPage = () => {
                   <p>Envío</p>
                   <p class="precio">S./ 15.00</p>
                 </div>
-   
+
                 <div class="texto-precios">
                   <p>TOTAL</p>
                   <p class="precio descuento">S./ {(total + 15).toFixed(2)}</p>
@@ -264,9 +367,14 @@ const PagarPage = () => {
                   <input class="input-dscto" type="text" />
                   <button class="boton-descuento">APLICAR</button>
                 </div>
-                <button class="boton-pago" onClick={() => {
+                <button
+                  class="boton-pago"
+                  onClick={() => {
                     setMostrar(true);
-                }}>CONTINUAR</button>
+                  }}
+                >
+                  CONTINUAR
+                </button>
               </div>
             </div>
           </aside>
@@ -274,23 +382,36 @@ const PagarPage = () => {
         {/* <!-- SECCION SUSRIPCION --> */}
         <section class="seccion-suscripcion">
           <figure>
-            <img class="img_suscripcion" src="https://aws-samishop-recursos.s3.amazonaws.com/00000D3E/es-PE/images/icons/WEB_WASIO_HOME_MATERIAL_TRAMA.png" alt="" />
-        </figure>
-        <div class="seccion-suscripcion">
+            <img
+              class="img_suscripcion"
+              src="https://aws-samishop-recursos.s3.amazonaws.com/00000D3E/es-PE/images/icons/WEB_WASIO_HOME_MATERIAL_TRAMA.png"
+              alt=""
+            />
+          </figure>
+          <div class="seccion-suscripcion">
             <p class="suscribete">Suscríbete a nuestro newsletter</p>
             <p>...Sé el primero en recibir todas las ofertas y promociones</p>
             <form class="input-container">
-                <input class="input-suscribete" type="text" placeholder="Ingrese su correo" />
-                <button class="btn-subscribete">&gt;</button>
+              <input
+                class="input-suscribete"
+                type="text"
+                placeholder="Ingrese su correo"
+              />
+              <button class="btn-subscribete">&gt;</button>
             </form>
-        </div>
+          </div>
         </section>
       </div>
-      <PagoModal mostrar={mostrar}
-      setMostrar={setMostrar}
-      carrito={carrito}/>
+      <PagoModal
+        mostrar={mostrar}
+        setMostrar={setMostrar}
+        carrito={carrito}
+        formulario={formulario}
+        fechaPedido={fechaPedido}
+        total={total}
+      />
     </main>
-    )
-}
+  );
+};
 
-export default PagarPage
+export default PagarPage;

@@ -52,7 +52,7 @@ const TiendaDetailPage = () => {
         {marcaTienda ? (
           <>
             <img
-              src="https://geozevallos.github.io/WasioPlace/src/img/tecnologia.jpg"
+              src={marcaTienda.img_portada}
               className="img-fluid"
             />
             <h4 className="text-center fs-2 mt-4">{marcaTienda.nomb_marca}</h4>

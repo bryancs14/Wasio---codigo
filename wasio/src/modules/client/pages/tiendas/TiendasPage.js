@@ -32,7 +32,7 @@ const TiendasPage = () => {
               </p>
             </div>
             <img
-              src="https://geozevallos.github.io/WasioPlace/src/img/tecnologia.jpg"
+              src={marca.img_portada}
               class="card-img-bottom"
               alt=" "
               style = {{height: "100%"}}

@@ -49,7 +49,8 @@ const CarritoPage = () => {
                       <h5>{objProducto.nombre}</h5>
                       <i>Stock disponible</i>
                       <small>SKU:VMPS2Rojo</small>
-                      <a href="#" class="link-danger" onClick={() => {eliminarProducto(objProducto.id); Toast.fire({
+                      <a href="#" class="link-danger" onClick={() => {eliminarProducto(objProducto.id); 
+                    Toast.fire({
                     icon: 'warning',
                     title: 'Producto eliminado'
                   });}}>
