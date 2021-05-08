@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useContext, useRef } from "react";
 import { NavLink } from "react-router-dom";
+import AuthContext from "../../../context/authContext";
 
 const AdminNavbar = () => {
+  const refAside = useRef();
+
+  const {cerrarSesion} = useContext(AuthContext);
+
   return (
-    <aside className="admin__aside__bar">
+    <aside className="admin__aside__bar" ref={refAside}>
       <div className="sidebar__profile">
-        <button className="sidebar__menu open-mobile">&#9776;</button>
+        <button
+          className="sidebar__menu open-mobile"
+          onClick={() => {
+            refAside.current.classList.toggle("open-mobile");
+          }}
+        >
+          &#9776;
+        </button>
       </div>
       <nav className="admin__sidebar__nav">
         <ul className="admin__sidebar__list">
@@ -34,10 +46,18 @@ const AdminNavbar = () => {
             </NavLink>
           </li>
           <li className="admin__sidebar__ite">
-            <NavLink className="admin__sidebar__link" to="/admin/settings">
+            <NavLink className="admin__sidebar__link" to="/">
               <i className="fas fa-sliders-h    "></i>
-              <p className="admin__sidebar__text">Ajustes</p>
+              <p className="admin__sidebar__text">Ir al client</p>
             </NavLink>
+          </li>
+          <li className="admin__sidebar__ite">
+            <div className="admin__sidebar__link" onClick={() => {
+              cerrarSesion();
+            }}>
+              <i className="fas fa-desktop "></i>
+              <p className="admin__sidebar__text">Cerrar Sesión</p>
+            </div>
           </li>
         </ul>
       </nav>

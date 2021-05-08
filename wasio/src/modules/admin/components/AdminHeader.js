@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import AuthContext from "../../../context/authContext";
 
 const AdminHeader = () => {
-
-  const {usu_nom} = useContext(AuthContext);
+  const { usu_nom } = useContext(AuthContext);
 
   return (
     <header className="admin__header">
@@ -18,10 +18,10 @@ const AdminHeader = () => {
           </figure>
         </div>
         <div className="header__links">
-          <a href="#" className="lih link__Micuenta">
+          <Link to="" className="lih link__Micuenta">
             <i className="fas fa-user"></i>
             <p className="text__header__link mc">{usu_nom}</p>
-          </a>
+          </Link>
         </div>
       </div>
       <div className="patron__header"></div>

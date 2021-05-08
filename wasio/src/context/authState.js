@@ -64,6 +64,7 @@ const AuthState = (props) => {
   return (
     <AuthContext.Provider value={{
       iniciarSesion,
+      cerrarSesion,
       ...state
     }}>
       {props.children}

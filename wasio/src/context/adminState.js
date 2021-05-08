@@ -17,6 +17,29 @@ const AdminState = (props) => {
     },
   });
 
+  // const ConfirmarDelete = Swal.fire({
+  //   title: '¡Desea eliminar?',
+  //   text: 'Esta accion es ireversible',
+  //   icon: 'warning',
+  //   showCancelButton: true,
+  //   confirmButtonText: 'Si',
+  //   cancelButtonText: 'No'
+  // }).then((result) => {
+  //   if (result.value) {
+  //     Swal.fire(
+  //       'Eliminado',
+  //       'Ha sido eliminado',
+  //       'success'
+  //     )
+  //   } else if (result.dismiss === Swal.DismissReason.cancel) {
+  //     Swal.fire(
+  //       'Cancelado',
+  //       'No se elimino',
+  //       'error'
+  //     )
+  //   }
+  // })
+
     return (
         <AdminContext.Provider value={{
           AdminToast

@@ -26,7 +26,7 @@ body {
 }
 
 .admin__header__main {
-  height: 100px;
+  height: 90px;
   background-color: #fff;
   position: relative;
   padding: 0px 20px;
@@ -292,7 +292,7 @@ textarea.input_1 {
     display: none;
   }
   .admin__header::after {
-    bottom: 10px;
+    bottom: 0;
     height: 10px;
   }
   .header__logo,

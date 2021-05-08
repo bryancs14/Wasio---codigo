@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router';
 import AdminContext from '../../../../../context/adminContext';
 import { deleteMarcaById, getMarcas } from '../../../../../services/marcasService';
-import AdminNavbar from '../../../components/AdminNavbar'
 
 const AdminMarcaPage = () => {
 

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/authContext";
 import { getCategorias } from "../../services/categoriasService";
@@ -18,13 +18,18 @@ const ClientHeader = () => {
     })
   }, [])
 
+  const refAside = useRef();
+
   return (
     <>
       <header className="header">
         <div className="header__wrapper seccion1">
           <div className="header__main">
             <div className="btn__mq2">
-              <button className="btn__menu open">&#9776;</button>
+              <button className="btn__menu open" onClick={() => {
+                console.log(refAside);
+                refAside.current.classList.toggle("open");
+              }}>&#9776;</button>
               <div className="buscadormq">
                 <button type="submit" className="fas fa-search"></button>
                 <input
@@ -107,7 +112,7 @@ const ClientHeader = () => {
         </div>
       </header>
       
-        <nav className="sidebar__nav open">
+        <nav className="sidebar__nav" ref={refAside}>
           <ul className="sidebar__list">
             {
               categorias.map((objCategoria, i) => {
