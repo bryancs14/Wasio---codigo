@@ -10,10 +10,13 @@ import ProductoDetailPage from "./pages/productos/ProductoDetailPage";
 import ProductosPage from "./pages/productos/ProductosPage";
 import TiendaDetailPage from "./pages/tiendas/TiendaDetailPage";
 import TiendasPage from "./pages/tiendas/TiendasPage";
+import ClientFooter from './../components/ClientFooter'
+import ClientHomePage from './pages/home/ClientHomePage'
+import ProductosPage from './pages/productos/ProductosPage'
 
 const ClientRouter = () => {
   return (
-    <>
+
       <CarritoState>
         <ClientHeader />
         <Switch>
@@ -39,8 +42,11 @@ const ClientRouter = () => {
             <ClientHomePage />
           </Route>
         </Switch>
+      <ClientFooter />
       </CarritoState>
-    </>
+
+      
+
   );
 };
 

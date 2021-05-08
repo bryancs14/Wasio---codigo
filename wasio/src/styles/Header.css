@@ -143,12 +143,13 @@
         width: 100%;
         position: relative
     }
-    .aside__bar {
+    .sidebar__nav {
         width: 0px;
         background-color: #fff;
         position: absolute;
+        z-index: 3000000;
         left: 0;
-        top: 0;
+        top: 50px;
         box-shadow:  2px 2px 5px rgb(34, 34, 34, 0.5);
         transition: width 0.5s ease-in;
     }
@@ -196,15 +197,15 @@
         width: 100%; 
     }
     .section__wrapper {
-        height: 500px;
+        height: 100%;
         width: 100%;
         background-color: #fff;
-        margin: 20px;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-content: center;
         padding-top: 100px;
+        padding-bottom: 20px;
     }
     .div__inicia, .div__registrate {
         padding: 0 50px 0 50px;
@@ -292,14 +293,14 @@
             height: 18px ;
             margin-bottom: 20px;
         }
-        .aside__bar.open{
+        .sidebar__nav.open{
             width:200px;
         }
-        .aside__bar.open  .sidebar__link  {
+        .sidebar__nav.open  .sidebar__link  {
             font-size: 15px;
             cursor: pointer;
         }
-        .aside__bar.open .sidebar__link > span > span{
+        .sidebar__nav.open .sidebar__link > span > span{
             display: block;
         }
         .btn__mq2, .buscadormq, .buscarmq {
@@ -324,3 +325,5 @@
                 min-width: 100px;
             }
         }
+
+        
