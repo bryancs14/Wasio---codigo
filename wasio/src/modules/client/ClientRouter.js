@@ -5,6 +5,7 @@ import ClientHeader from "./components/ClientHeader";
 import CarritoPage from "./pages/carrito/CarritoPage";
 
 import ClientHomePage from "./pages/home/ClientHomePage";
+import PagarPage from "./pages/pago/PagarPage";
 import ProductoDetailPage from "./pages/productos/ProductoDetailPage";
 import ProductosPage from "./pages/productos/ProductosPage";
 import TiendaDetailPage from "./pages/tiendas/TiendaDetailPage";
@@ -16,6 +17,9 @@ const ClientRouter = () => {
       <CarritoState>
         <ClientHeader />
         <Switch>
+          <Route path="/pago">
+            <PagarPage />
+          </Route>
           <Route path="/tienda/:id">
             <TiendaDetailPage />
           </Route>

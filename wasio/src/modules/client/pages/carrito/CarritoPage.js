@@ -88,7 +88,7 @@ const CarritoPage = () => {
                 <p>Precio con descuento</p>
                 <p className="precio descuento">S./ 2500</p>
               </div>
-              <button className="boton-pago">IR A PAGAR</button>
+              <button className="boton-pago" onClick={() => {history.push('/pago')}}>IR A PAGAR</button>
               <small className="disclaimer">
                 Los códigos promocionales se pueden utilizar en la página
                 siguiente

@@ -1,0 +1,318 @@
+
+
+main{
+    display: flex;
+    justify-content: center;
+}
+
+.contenedor-wraper{
+    padding: 20px;
+    width: 1600px;
+}
+
+.contenedor-principal{
+    display: flex;
+    padding-top: 15px;
+}
+
+
+.contenedor-caja{
+    display: flex;
+    flex-direction: column;
+    flex:6;
+    gap: 10px;
+}
+
+.seccion-formulario{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 25px;
+}
+
+
+.div-formulario{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+
+.input-formulario{
+    width: 70%;
+    height: 30px;
+    border: 1px solid #cccccc;
+}
+
+.encabezado-form2{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    
+    gap: 16px;
+    margin-bottom: 15px;
+}
+
+
+.radio-checkbox{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+form{
+    display: flex;
+    gap: 10px;
+}
+
+.formulario2{
+    flex-direction: column;
+}
+
+
+.division-formulario{
+    display: flex;
+    gap: 10px;
+}
+
+
+
+.radio-bf{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+/* Formas de pago */
+
+.contenedor-formadepago{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #dddddd;
+    margin-top: 20px;
+}
+
+.contorno-cabecera-pago{
+    background-color: #f5f5f5;
+}
+.cabecera-pago{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 10px;
+    padding: 10px;
+}
+
+
+.img_pago{
+    height: 20px;
+}
+
+.descripcion-contenedor{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 60px;
+}
+.descripcion-metodoPago{
+    padding-left: 70px;
+}
+
+
+
+/* Aside: Cuadro de precios */
+
+.contenedor-aside{
+    flex:2
+}
+
+.contenedor-aside-precios{
+    margin-top: 10px;
+    padding: 10px;
+    display: flex;
+    /* align-items: center; */
+}
+
+.contenedor-precios{
+    display: flex;
+    flex-direction: column;
+    background-color: #f7f7f7;
+    padding: 20px;
+    /* gap: 5px; */
+    border: 1px solid #dddddd;
+    height: 500px; 
+}
+
+.texto-precios{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.precio{
+    font-weight: bold;
+}
+
+.precio.descuento{
+    color: #c00008;
+}
+
+
+.descuento-cupon{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+
+.input-dscto{
+    height: 25px;
+}
+
+
+button{
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: lighter;
+    transition: background-color 0.1s linear;
+    font-size: 16px;
+}
+
+.boton-pago{
+    background-color: #F65559;
+    border-radius: 4px;
+    padding: 6px;
+    margin: 5px;
+}
+
+.boton-descuento{
+    background-color: #0b4c60;
+    padding: 3px;
+    padding: 5px;
+}
+
+button:hover {
+    background-color: #5a5a5a;
+}
+
+
+
+
+
+
+/* Seccion suscripcion */
+
+.seccion-suscripcion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0px 15px;
+}
+
+.seccion-suscripcion > figure{
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.img_suscripcion{
+   width: 90%;
+}
+
+
+.suscribete{
+    font-size: 30px;
+    text-align: center;
+}
+
+.input-container {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 5px;
+    width: 300px;
+    height: 50px;
+    display: flex;
+}
+
+
+.input-suscribete{
+    border: none;
+    width: calc(100% - 5px);
+    outline: none;
+}
+
+
+.btn-subscribete{
+    background-color: white;
+    color: #5a5a5a;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 978px) {
+    .form-superior{
+        flex-direction: column;
+    }
+
+    .encabezado-form2{
+        gap: 5px;
+        margin-bottom: 15px;
+    }
+
+    form{
+        gap: 0px;
+    }
+}
+
+
+
+
+
+/* ---------- MEDIA ---------------- */
+@media (max-width: 780px) {
+
+    .contenedor-wraper{
+        width: 780px;
+    }
+    .contenedor-principal{
+        flex-direction: column;
+    }
+    .contenedor-aside-precios{
+        margin-top: 20px;
+        padding: 0px;
+    }
+
+    .contenedor-precios{
+       width: 100%;
+    }
+
+    .descuento-cupon{
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+}
+
+
+@media (max-width: 480px) {
+    .contenedor-precios{
+        width: 100%;
+     }   
+}
