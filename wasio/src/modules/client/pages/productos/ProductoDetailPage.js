@@ -29,7 +29,6 @@ const ProductoDetailPage = () => {
   useEffect(() => {
     getProductoById(productoId).then((rpta) => {
       setObjProducto(rpta.data);
-      console.log(rpta.data);
     });
   }, []);
 

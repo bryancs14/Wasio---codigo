@@ -7,9 +7,9 @@ const Productos = ({productos}) => {
             {
                 productos.map((objProducto) => {
                     return(
-                        <div class="col-md-3 mt-3 naranja" key={objProducto.id}>
+                        
                         <Producto objProducto={objProducto} />
-                        </div>
+                        
                     )
                 })
             }

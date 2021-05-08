@@ -16,6 +16,9 @@ const ClientRouter = () => {
       <CarritoState>
         <ClientHeader />
         <Switch>
+          <Route path="/tienda/:id">
+            <TiendaDetailPage />
+          </Route>
           <Route path="/tienda">
             <TiendasPage />
           </Route>

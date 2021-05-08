@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import { getTienda } from "../../../../services/tiendaService";
 import Flickity from "react-flickity-component";
 import "../../../../styles/Flickity.css";
+import { useHistory } from "react-router";
 
 const TiendasPage = () => {
   const [tienda, setTienda] = useState([]);
+
+  const history = useHistory();
 
   const traerTiendas = () => {
     getTienda().then((rpta) => {
@@ -21,8 +24,8 @@ const TiendasPage = () => {
       <Flickity>
         {tienda.map((marca) => {
           return (
-            <div class="card col-md-11">
-            <div class="card-body">
+            <div class="card col-md-11" onClick={() => {history.push(`/tienda/${marca.id}`)}}>
+            <div class="card-body" >
               <h5 class="card-title">{marca.nomb_marca}</h5>
               <p class="card-text">
                 {marca.descripcion}
@@ -31,7 +34,7 @@ const TiendasPage = () => {
             <img
               src="https://geozevallos.github.io/WasioPlace/src/img/tecnologia.jpg"
               class="card-img-bottom"
-              alt="..."
+              alt=" "
               style = {{height: "100%"}}
             />
           </div>

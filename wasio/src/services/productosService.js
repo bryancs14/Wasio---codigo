@@ -22,3 +22,10 @@ export const getProductosByCategoria = async(idCategoria) =>
   const rpta = await axios.get(URL_BACKEND + "/producto?cat_id=" + idCategoria);
   return rpta;
 }
+
+
+export const getProductosByTienda = async(marcaId) =>
+{
+  const rpta = await axios.get(URL_BACKEND + "/producto?marca_id=" + marcaId);
+  return rpta;
+}

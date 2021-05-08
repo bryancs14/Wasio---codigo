@@ -1,10 +1,14 @@
 import React, { useContext } from "react";
+import { useHistory } from "react-router";
 import CarritoContext from "../../../../context/carrito/carritoContext";
 import "../../../../styles/carrito.css";
+
 
 const CarritoPage = () => {
   const { carrito, eliminarProducto, Toast } = useContext(CarritoContext);
   console.log(carrito);
+
+  const history = useHistory();
 
   let total = carrito.reduce((sumatoria, objProducto) => {
     return sumatoria + objProducto.precio * objProducto.cantidad;
