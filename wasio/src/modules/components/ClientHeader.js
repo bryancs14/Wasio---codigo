@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import AuthContext from "../../context/authContext";
 import { getCategorias } from "../../services/categoriasService";
 import "../../styles/Header.css";
@@ -8,7 +8,7 @@ const ClientHeader = () => {
 
   const [categorias, setCategorias] = useState([]);
 
-  const {usu_nom} = useContext(AuthContext);
+  const {usu_nom, usu_tipo} = useContext(AuthContext);
 
   useEffect(() => {
     getCategorias().then(rpta => {
@@ -56,10 +56,10 @@ const ClientHeader = () => {
               <li>
                 {
                   usu_nom ?
-                  <a href="#" className="lih link__Micuenta">
+                  <Link to={usu_tipo==="admin" ? "/admin" : "/"} className="lih link__Micuenta">
                     <i className="fas fa-user"></i>
                     <p className="text__header__link mc">{usu_nom}</p>
-                  </a> :
+                  </Link> :
                   <Link to="/auth/login" className="lih link__Micuenta">
                     <i className="fas fa-user"></i>
                     <p className="text__header__link mc">Iniciar Sesión</p>
@@ -67,7 +67,7 @@ const ClientHeader = () => {
                 }
               </li>
               <li>
-                <a href="#" className="lih link__Carrito">
+                <Link to="" className="lih link__Carrito">
                   <i className="fas fa-shopping-cart"></i>
                   <div className="car__div">
                     <p
@@ -77,7 +77,7 @@ const ClientHeader = () => {
                       0
                     </p>
                   </div>
-                </a>
+                </Link>
               </li>
             </div>
           </div>
@@ -91,12 +91,14 @@ const ClientHeader = () => {
                 categorias.map((objCategoria, i) => {
                   return(
                     <li key={i}>
-                      <a href="#" className="header__navlink">{objCategoria.nomb_categoria}</a>
+                      <Link to="/" className="header__navlink">{objCategoria.nomb_categoria}</Link>
                     </li>
                   );
                 })
               }
-              
+              <li>
+                <Link to="/" className="header__navlink">Marcas</Link>
+              </li>
             </ul>
           </nav>
         </div>
@@ -111,15 +113,22 @@ const ClientHeader = () => {
               categorias.map((objCategoria, i) => {
                 return (
                   <li className="sidebar__ite" key={i}>
-                    <NavLink className="sidebar__link" to="/" data-title={objCategoria.nomb_categoria}>
+                    <Link className="sidebar__link" to="/" data-title={objCategoria.nomb_categoria}>
                       <span>
                         <span></span>
                       </span>
-                    </NavLink>
+                    </Link>
                   </li>
                 );
-              })}
-            
+              })
+            }
+            <li className="sidebar__ite">
+              <Link className="sidebar__link" to="/" data-title="Marcas">
+                <span>
+                  <span></span>
+                </span>
+              </Link>
+            </li>
           </ul>
         </nav>
       

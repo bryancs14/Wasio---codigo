@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { getCategorias } from "../../../../services/categoriasService";
-import { getMarcas } from "../../../../services/marcasService";
+import AuthContext from "../../../../../context/authContext";
+import { getCategorias } from "../../../../../services/categoriasService";
+import { getMarcas } from "../../../../../services/marcasService";
 import {
   getProductoById,
   postProducto,
   putProductoById,
-} from "../../../../services/productosService";
-import AdminNavbar from "../../components/AdminNavbar";
+} from "../../../../../services/productosService";
 
 const AdminCrearProducto = () => {
   const formularioVacio = {
@@ -24,6 +24,7 @@ const AdminCrearProducto = () => {
 
   const history = useHistory();
   const { id_producto } = useParams();
+  const {AdminToast} = useContext(AuthContext);
 
   const [formulario, setFormulario] = useState(formularioVacio);
   const [categorias, setCategorias] = useState([]);
@@ -41,13 +42,21 @@ const AdminCrearProducto = () => {
     if(id_producto) {
       putProductoById(formulario).then(rpta => {
         if (rpta.request.status === 200) {
-          console.log("Cambios guardados");
+          AdminToast.fire({
+            icon: 'success',
+            title: 'Cambios guardados'
+          });
+          history.replace("/admin/producto");
         }
       })
     } else {
       postProducto(formulario).then((rpta) => {
-        if (rpta.request.status === 200) {
-          console.log("Producto guardada");
+        if (rpta.request.status === 201) {
+          AdminToast.fire({
+            icon: 'success',
+            title: 'Producto creado'
+          });
+          history.replace("/admin/producto");
         }
       });
     }
@@ -82,8 +91,7 @@ const AdminCrearProducto = () => {
   }, []);
 
   return (
-    <main className="admin__main">
-      <AdminNavbar />
+
       <section className="section__crear">
         <form className="Crear__producto" onSubmit={hangleSubmit}>
           {id_producto ? (
@@ -98,7 +106,7 @@ const AdminCrearProducto = () => {
             </div>
           ) : null}
           <div className="input__container1">
-            <label htmlFor="">Nombre:</label>
+            <label htmlFor="">Nombre del producto:</label>
             <input
               className="input_1"
               type="text"
@@ -108,7 +116,7 @@ const AdminCrearProducto = () => {
             />
           </div>
           <div className="input__container1">
-            <label htmlFor="">Descripción:</label>
+            <label htmlFor="">Descripción del producto:</label>
             <textarea
               className="input_1"
               type="text"
@@ -120,7 +128,7 @@ const AdminCrearProducto = () => {
 
           <div className="row__input">
             <div className="input__container1">
-              <label htmlFor="">Categoría:</label>
+              <label htmlFor="">Categoría del producto:</label>
               <select
                 className="input_1"
                 name="cat_id"
@@ -138,14 +146,14 @@ const AdminCrearProducto = () => {
               </select>
             </div>
             <div className="input__container1">
-              <label htmlFor="">Marca:</label>
+              <label htmlFor="">Marca del producto:</label>
               <select
                 className="input_1"
                 name="marca_id"
                 onChange={hangleChange}
                 value={formulario.marca_id}
               >
-                <option value="0">Seleccione una categoria</option>
+                <option value="0">Seleccione una marca</option>
                 {marcas.map((objMarca, i) => {
                   return (
                     <option value={objMarca.id} key={i}>
@@ -158,24 +166,26 @@ const AdminCrearProducto = () => {
           </div>
           <div className="row__input">
             <div className="input__container1">
-              <label htmlFor="">Precio:</label>
+              <label htmlFor="">Precio del producto:</label>
               <input
                 className="input_1"
                 type="number"
                 name="precio"
                 onChange={hangleChange}
-                value={formulario.precio}
+                value={formulario.precio!==0 && formulario.precio}
+                placeholder="0"
               />
             </div>
 
             <div className="input__container1">
-              <label htmlFor="">Stock:</label>
+              <label htmlFor="">Stock del producto:</label>
               <input
                 className="input_1"
                 type="number"
                 name="stock"
                 onChange={hangleChange}
-                value={formulario.stock}
+                value={formulario.stock!==0 && formulario.stock}
+                placeholder="0"
               />
             </div>
           </div>
@@ -186,7 +196,8 @@ const AdminCrearProducto = () => {
               type="number"
               name="porc_descuento"
               onChange={hangleChange}
-              value={formulario.porc_descuento}
+              value={formulario.porc_descuento!==0 && formulario.porc_descuento}
+              placeholder="0"
             />
           </div>
           <div className="input__container1">
@@ -214,7 +225,7 @@ const AdminCrearProducto = () => {
           </div>
         </form>
       </section>
-    </main>
+
   );
 };
 

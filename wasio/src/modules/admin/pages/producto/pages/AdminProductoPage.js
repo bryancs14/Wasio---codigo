@@ -1,33 +1,31 @@
-import React, { useEffect, useState } from 'react'
-import { useHistory, useParams } from 'react-router';
-import { getCategorias, deleteCategoriaById } from '../../../../services/categoriasService'
-import AdminNavbar from '../../components/AdminNavbar';
+import React, { useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import AdminContext from "../../../../../context/adminContext";
+import { deleteProductoById, getProductos } from "../../../../../services/productosService";
+import "./../../../../../styles/Productos.css";
 
-const AdminCategoriaPage = () => {
+const AdminProductoPage = () => {
+  const [productos, setProductos] = useState([]);
 
   let borrados = false;
-  let borrado = false;
 
-  const [categorias, setCategorias] = useState([]);
+  const {AdminToast} = useContext(AdminContext)
 
-  const {id_categoria} = useParams();
-  const history = useHistory();
-
-  const traerCategorias = () => {
-    getCategorias().then(rpta => {
-      if(rpta.request.status === 200) {
-        setCategorias(rpta.data);
+  const traerProductos = () => {
+    getProductos().then((rpta) => {
+      if (rpta.request.status === 200) {
+        setProductos(rpta.data);
       }
-    })
-  }
+    });
+  };
 
   useEffect(() => {
-    traerCategorias();
-  }, [])
+    traerProductos();
+  }, []);
 
   const deleteAll = () => {
-    categorias.forEach((objCategoria => {
-      deleteCategoriaById(objCategoria.id).then(rpta => {
+    productos.forEach((objProducto => {
+      deleteProductoById(objProducto.id).then(rpta => {
         if(rpta.request.status === 200){
           borrados = true;
         } else {
@@ -36,27 +34,40 @@ const AdminCategoriaPage = () => {
       })
     }))
     if(borrados) {
-      console.log("Todos los productos fueron borrados");
+      AdminToast.fire({
+        icon: 'success',
+        title: 'Todas los productos fueron eliminados'
+      });
+      traerProductos();
     } else {
-      console.log("No se pudo borrar todos los productos");
+      AdminToast.fire({
+        icon: 'danger',
+        title: 'No se pudo borrar todos los productos'
+      });
+      traerProductos();
     }
-    traerCategorias();
   }
 
-  const deleteCategoria = (id_categoria) => {
-    deleteCategoriaById(id_categoria).then(rpta => {
+  const deleteProducto = (id_producto) => {
+    deleteProductoById(id_producto).then(rpta => {
       if(rpta.request.status === 200){
-        borrado = true;
+        AdminToast.fire({
+          icon: 'success',
+          title: 'Producto eliminado'
+        });
+        traerProductos();
       } else {
-        borrado = false;
+        AdminToast.fire({
+          icon: 'danger',
+          title: 'El producto no se elimino'
+        });
       }
     })
-    traerCategorias();
   }
 
+  const history = useHistory();
   return (
-    <main className="admin__main">
-      <AdminNavbar />
+
       <section className="section__listaproductos">
         <div className="primeraparte__lp">
           <h1 className="title__listaproductos">Productos</h1>
@@ -64,7 +75,7 @@ const AdminCategoriaPage = () => {
             <button
               className="btn_admin_lp btnlp1"
               onClick={() => {
-                history.push("/admin/categoria/crear");
+                history.push("/admin/producto/crear");
               }}
             >
               <i className="fas fa-plus"></i>
@@ -72,7 +83,7 @@ const AdminCategoriaPage = () => {
             <button
               className="btn_admin_lp btnlp2"
               onClick={() => {
-                traerCategorias();
+                traerProductos();
               }}
             >
               <i className="fas fa-sync"></i>
@@ -96,31 +107,41 @@ const AdminCategoriaPage = () => {
                   <input type="checkbox" />
                 </th>
                 <th>Id</th>
+                <th>Producto</th>
+                <th>Categoria</th>
                 <th>Marca</th>
+                <th>Stock</th>
+                <th>Precio</th>
+                <th>% Descuento</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
               </tr>
             </thead>
             <tbody>
               {
-                categorias.map((objCategoria, i) => {
+                productos.map((objProducto, i) => {
                   return (
                     <tr key={i}>
                 <td>
                   <input type="checkbox" />
                 </td>
-                <td>{objCategoria.id}</td>
-                <td>{objCategoria.nomb_categoria}</td>
+                <td>{objProducto.id}</td>
+                <td>{objProducto.nombre}</td>
+                <td>{objProducto.cat_id || "Sin categoria"}</td>
+                <td>{objProducto.marca_id || "Sin marca"}</td>
+                <td>{objProducto.stock}</td>
+                <td>{objProducto.precio}</td>
+                <td>{objProducto.porc_descuento}</td>
                 <td>
                   <button type="button" onClick={() => {
-                    history.push("/admin/categoria/editar/"+objCategoria.id)
+                    history.push("/admin/producto/editar/"+objProducto.id)
                   }}>
                     <i className="fas fa-edit"></i>
                   </button>
                 </td>
                 <td>
                   <button onClick={() => {
-                    deleteCategoria(objCategoria.id);
+                    deleteProducto(objProducto.id);
                   }}>
                     <i className="fas fa-trash"></i>
                   </button>
@@ -133,8 +154,7 @@ const AdminCategoriaPage = () => {
           </table>
         </div>
       </section>
-    </main>
-  )
-}
 
-export default AdminCategoriaPage
+  );
+};
+export default AdminProductoPage;

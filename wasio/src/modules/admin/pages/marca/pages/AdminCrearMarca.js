@@ -1,19 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { getMarcaById, postMarca, putMarcaById } from "../../../../services/marcasService";
-import AdminNavbar from "../../components/AdminNavbar";
+import AdminContext from "../../../../../context/adminContext";
+import { getMarcaById, postMarca, putMarcaById } from "../../../../../services/marcasService";
+import AdminNavbar from "../../../components/AdminNavbar";
+
+const formularioVacio = {
+  nomb_marca: "",
+  descripcion: "",
+  img_portada: "",
+  img_logo: "",
+};
 
 const AdminCrearMarca = () => {
-  const formularioVacio = {
-    nomb_marca: "",
-    descripcion: "",
-    img_portada: "",
-    img_logo: "",
-  };
 
   const [formulario, setFormulario] = useState(formularioVacio);
 
   const history = useHistory();
+  const {AdminToast} = useContext(AdminContext);
   const { id_marca } = useParams();
 
   const hangleChange = (e) => {
@@ -28,13 +31,21 @@ const AdminCrearMarca = () => {
     if(id_marca) {
       putMarcaById(formulario).then(rpta => {
         if (rpta.request.status === 200) {
-          console.log("Cambios guardados");
+          AdminToast.fire({
+            icon: 'success',
+            title: 'Cambios guardados'
+          });
+          history.replace("/admin/marca");
         }
       })
     } else {
       postMarca(formulario).then((rpta) => {
-        if (rpta.request.status === 200) {
-          console.log("Marca guardada");
+        if (rpta.request.status === 201) {
+          AdminToast.fire({
+            icon: 'success',
+            title: 'Marca creada'
+          });
+          history.replace("/admin/marca");
         }
       });
     }
@@ -59,8 +70,7 @@ const AdminCrearMarca = () => {
   }, [])
 
   return (
-    <main className="admin__main">
-      <AdminNavbar />
+
       <section className="section__crear">
         <form className="Crear__producto" onSubmit={hangleSubmit}>
           {id_marca ? (
@@ -75,7 +85,7 @@ const AdminCrearMarca = () => {
             </div>
           ) : null}
           <div className="input__container1">
-            <label htmlFor="">Nombre:</label>
+            <label htmlFor="">Nombre de la marca:</label>
             <input
               className="input_1"
               type="text"
@@ -85,7 +95,7 @@ const AdminCrearMarca = () => {
             />
           </div>
           <div className="input__container1">
-            <label htmlFor="">Descripción:</label>
+            <label htmlFor="">Descripción de la marca:</label>
             <textarea
               className="input_1"
               type="text"
@@ -123,7 +133,7 @@ const AdminCrearMarca = () => {
           </div>
         </form>
       </section>
-    </main>
+
   );
 };
 

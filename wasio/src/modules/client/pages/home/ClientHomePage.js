@@ -3,6 +3,7 @@ import "./../../../../styles/home.css"
 import banner from "./../../../../assets//img/main__banner.png";
 import HomeSectionCategoria from "./components/HomeSectionCategoria";
 import { getCategorias } from "../../../../services/categoriasService";
+import HomeNavbar2 from "./components/HomeNavbar2";
 
 const ClientHomePage = () => {
 
@@ -30,7 +31,7 @@ const ClientHomePage = () => {
             <div className="padrastro">
               <div className="divs__info1">
                 <div className="i__divsinfo">
-                  {" "}
+                  
                   <i className="fas fa-check-circle    "></i>
                 </div>
                 <div className="text__divsinfo">
@@ -43,13 +44,13 @@ const ClientHomePage = () => {
               </div>
               <div className="divs__info2">
                 <div className="i__divsinfo">
-                  {" "}
+                  
                   <i className="fas fa-question    "></i>
                 </div>
                 <div className="text__divsinfo">
                   <p className="sub__divsinfo">Wasio aclara tus dudas</p>
                   <p className="info__divsinfo">
-                    {" "}
+                    
                     Ingresa a nuestra seccion de Preguntas y Respuestas.
                   </p>
                 </div>
@@ -58,7 +59,7 @@ const ClientHomePage = () => {
             <div className="padrastro">
               <div className="divs__info3">
                 <div className="i__divsinfo">
-                  {" "}
+                  
                   <i className="fas fa-exchange-alt    "></i>
                 </div>
                 <div className="text__divsinfo">
@@ -71,7 +72,7 @@ const ClientHomePage = () => {
               </div>
               <div className="divs__info4">
                 <div className="i__divsinfo">
-                  {" "}
+                  
                   <i className="fas fa-people-carry    "></i>
                 </div>
                 <div className="text__divsinfo">
@@ -117,88 +118,7 @@ const ClientHomePage = () => {
             <div className="p5Hijo1"></div>
           </div>
         </div>
-
-        <div className="navbar2">
-          <div className="navbar2__wrapper">
-            <div className="navbar2__item">
-              <li>
-                <a href="">
-                  <img
-                    src="https://aws-samishop-recursos.s3.us-east-1.amazonaws.com/00000D3E/files/I_ICONO_MUJER.png"
-                    alt=""
-                  />
-                </a>
-              </li>
-              <p>Mujer</p>
-            </div>
-            <div className="navbar2__item">
-              <li>
-                <a href="">
-                  <img
-                    src="https://aws-samishop-recursos.s3.us-east-1.amazonaws.com/00000D3E/files/I_ICONO_BOLSOS_Y_ACCESORIOS.png"
-                    alt=""
-                  />
-                </a>
-              </li>
-              <p>Bolsos y Accesorios</p>
-            </div>
-            <div className="navbar2__item">
-              <li>
-                <a href="">
-                  <img
-                    src="https://aws-samishop-recursos.s3.us-east-1.amazonaws.com/00000D3E/files/I_ICONO_CALZADO.png"
-                    alt=""
-                  />
-                </a>
-              </li>
-              <p>Calzado</p>
-            </div>
-            <div className="navbar2__item">
-              <li>
-                <a href="">
-                  <img
-                    src="https://aws-samishop-recursos.s3.us-east-1.amazonaws.com/00000D3E/files/I_ICONO_TECNOLOGIA.png"
-                    alt=""
-                  />
-                </a>
-              </li>
-              <p>Tecnología</p>
-            </div>
-            <div className="navbar2__item">
-              <li>
-                <a href="">
-                  <img
-                    src="https://aws-samishop-recursos.s3.us-east-1.amazonaws.com/00000D3E/files/I_ICONO_HOGAR.png"
-                    alt=""
-                  />
-                </a>
-              </li>
-              <p>Hogar</p>
-            </div>
-            <div className="navbar2__item">
-              <li>
-                <a href="">
-                  <img
-                    src="https://aws-samishop-recursos.s3.us-east-1.amazonaws.com/00000D3E/files/I_ICONO_DEPORTE.png"
-                    alt=""
-                  />
-                </a>
-              </li>
-              <p>Deporte</p>
-            </div>
-            <div className="navbar2__item">
-              <li>
-                <a href="">
-                  <img
-                    src="https://aws-samishop-recursos.s3.us-east-1.amazonaws.com/00000D3E/files/I_ICONO_TIENDAS_MARCAS.png"
-                    alt=""
-                  />
-                </a>
-              </li>
-              <p>Marcas</p>
-            </div>
-          </div>
-        </div>
+        <HomeNavbar2 categorias={categorias}/>
         {
           categorias.map(objCategoria => {
             return <HomeSectionCategoria objCategoria={objCategoria} key={objCategoria.id}/>

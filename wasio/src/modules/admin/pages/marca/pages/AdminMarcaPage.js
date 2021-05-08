@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router';
-import { deleteMarcaById, getMarcas } from '../../../../services/marcasService';
-import AdminNavbar from '../../components/AdminNavbar'
+import AdminContext from '../../../../../context/adminContext';
+import { deleteMarcaById, getMarcas } from '../../../../../services/marcasService';
+import AdminNavbar from '../../../components/AdminNavbar'
 
 const AdminMarcaPage = () => {
 
@@ -9,7 +10,8 @@ const AdminMarcaPage = () => {
   const [marcas, setMarcas] = useState([]);
 
   let borrados = false;
-  let borrado = false;
+
+  const {AdminToast} = useContext(AdminContext);
 
   const traerMarcas = () => {
     getMarcas().then(rpta => {
@@ -34,9 +36,15 @@ const AdminMarcaPage = () => {
       })
     }))
     if(borrados) {
-      console.log("Todos los productos fueron borrados");
+      AdminToast.fire({
+        icon: 'success',
+        title: 'Todas las marcas fueron eliminadas'
+      });
     } else {
-      console.log("No se pudo borrar todos los productos");
+      AdminToast.fire({
+        icon: 'success',
+        title: 'No se pudieron eliminar todas las marcas'
+      });
     }
     traerMarcas();
   }
@@ -44,17 +52,22 @@ const AdminMarcaPage = () => {
   const deleteMarca = (id_marca) => {
     deleteMarcaById(id_marca).then(rpta => {
       if(rpta.request.status === 200){
-        borrado = true;
+        AdminToast.fire({
+          icon: 'success',
+          title: 'Marca eliminada'
+        });
       } else {
-        borrado = false;
+        AdminToast.fire({
+          icon: 'success',
+          title: 'No se pudo eliminar la marca'
+        });
       }
     })
     traerMarcas();
   }
 
   return (
-    <main className="admin__main">
-      <AdminNavbar />
+
       <section className="section__listaproductos">
         <div className="primeraparte__lp">
           <h1 className="title__listaproductos">Productos</h1>
@@ -133,7 +146,7 @@ const AdminMarcaPage = () => {
           </table>
         </div>
       </section>
-    </main>
+
   )
 }
 

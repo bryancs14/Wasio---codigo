@@ -28,8 +28,7 @@ const AdminDashboardPage = () => {
   }, [])
 
   return (
-    <main className="admin__main">
-      <AdminNavbar />
+
       <div className="alldash">
         <div className="dash__wrapper">
           <div className="dd1">
@@ -106,7 +105,7 @@ const AdminDashboardPage = () => {
           <div className="dashpatron"></div>
         </div>
       </div>
-    </main>
+
   );
 };
 

@@ -4,15 +4,16 @@ import AuthState from "./context/authState";
 import AdminRouter from "./modules/admin/AdminRouter";
 import AuthRouter from "./modules/auth/AuthRouter";
 import ClientRouter from "./modules/client/ClientRouter";
+import PrivateRoute from "./PrivateRoute";
 
 const App = () => {
   return (
     <AuthState>
       <Router>
         <Switch>
-          <Route path="/admin">
+          <PrivateRoute path="/admin">
             <AdminRouter />
-          </Route>
+          </PrivateRoute>
           <Route path="/auth">
             <AuthRouter />
           </Route>

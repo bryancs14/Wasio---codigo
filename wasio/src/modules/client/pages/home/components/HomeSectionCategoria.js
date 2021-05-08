@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getProductos } from "../../../../../services/productosService";
 import trama from "./../../../../../assets/img/trama.png";
 import SectionCategoriaCard from "./SectionCategoriaCard";
@@ -34,9 +35,9 @@ const HomeSectionCategoria = ({objCategoria}) => {
           }
         </div>
       </div>
-      <a href="" className="btn__verMas">
+      <Link to="/" className="btn__verMas">
         Ver más productos
-      </a>
+      </Link>
     </section>
   );
 };

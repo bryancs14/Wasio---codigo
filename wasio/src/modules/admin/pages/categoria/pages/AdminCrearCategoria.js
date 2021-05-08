@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router';
-import { getCategoriaById, postCategoria, putCategoriaById } from '../../../../services/categoriasService';
-import AdminNavbar from '../../components/AdminNavbar'
+import AuthContext from '../../../../../context/authContext';
+import { getCategoriaById, postCategoria, putCategoriaById } from '../../../../../services/categoriasService';
+
 
 const AdminCrearCategoria = () => {
 
   const formularioVacio = {
     nomb_categoria: ""
   }
+
+  const {AdminToast} = useContext(AuthContext);
 
   const [formulario, setFormulario] = useState(formularioVacio);
 
@@ -27,13 +30,21 @@ const AdminCrearCategoria = () => {
     if(id_categoria) {
       putCategoriaById(formulario).then(rpta => {
         if (rpta.request.status === 200) {
-          console.log("Cambios guardados");
+          AdminToast.fire({
+            icon: 'success',
+            title: 'Cambios guardados'
+          });
+          history.replace("/admin/categoria");
         }
       })
     } else {
-      postCategoria(formulario).then((rpta) => {
-        if (rpta.request.status === 200) {
-          console.log("Marca guardada");
+      postCategoria(formulario).then(rpta => {
+        if (rpta.request.status === 201) {
+          AdminToast.fire({
+            icon: 'success',
+            title: 'Categoria creada'
+          });
+          history.replace("/admin/categoria");
         }
       });
     }
@@ -58,8 +69,7 @@ const AdminCrearCategoria = () => {
   }, [])
 
   return (
-    <main className="admin__main">
-      <AdminNavbar />
+
       <section className="section__crear">
         <form className="Crear__producto" onSubmit={hangleSubmit}>
           {id_categoria ? (
@@ -74,14 +84,18 @@ const AdminCrearCategoria = () => {
             </div>
           ) : null}
           <div className="input__container1">
-            <label htmlFor="">Nombre:</label>
+            <label htmlFor="">Nombre de la categoria:</label>
             <input
               className="input_1"
               type="text"
-              name="nomb_marca"
+              name="nomb_categoria"
               onChange={hangleChange}
               value={formulario.nomb_categoria}
             />
+          </div>
+          <div className="input__container1">
+            <label htmlFor="">Logo de la categoria:</label>
+            <input type="file" />
           </div>
           <div className="Btns__crear">
             <button className="btn__crear btn1" type="submit">
@@ -104,7 +118,7 @@ const AdminCrearCategoria = () => {
           </div>
         </form>
       </section>
-    </main>
+
   )
 }
 

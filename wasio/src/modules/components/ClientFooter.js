@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ClientFooter = () => {
   return (
@@ -9,19 +10,19 @@ const ClientFooter = () => {
             <ul>
               <strong>Datos de Contacto</strong>
               <li>
-                <a href="#">+51 945 072 482</a>
+                <Link to="/">+51 945 072 482</Link>
               </li>
               <li>
-                <a href="#">wasioperu@gmail.com</a>
+                <Link to="/">wasioperu@gmail.com</Link>
               </li>
             </ul>
             <ul>
               <strong>Acerca de Nosotros</strong>
               <li>
-                <a href="">¿Quiénes somos?</a>
+                <Link to="/">¿Quiénes somos?</Link>
               </li>
               <li>
-                <a href="">Nuestros productos</a>
+                <Link to="/">Nuestros productos</Link>
               </li>
             </ul>
           </div>
@@ -29,23 +30,23 @@ const ClientFooter = () => {
             <ul>
               <strong>Atención al cliente</strong>
               <li>
-                <a href="">Protección de datos</a>
+                <Link to="/">Protección de datos</Link>
               </li>
               <li>
-                <a href="">Términos y Condiciones</a>
+                <Link to="/">Términos y Condiciones</Link>
               </li>
               <li>
-                <a href="">Cambios y Devoluciones</a>
+                <Link to="/">Cambios y Devoluciones</Link>
               </li>
               <li>
-                <a href="">Política de Envíos</a>
+                <Link to="/">Política de Envíos</Link>
               </li>
             </ul>
             <ul>
               <ul>
                 <strong>Siguenos</strong>
                 <li>
-                  <a href="">Wasio</a>
+                  <Link to="/">Wasio</Link>
                 </li>
               </ul>
               <ul>
@@ -65,18 +66,18 @@ const ClientFooter = () => {
             <ul>
               <strong>Dirección</strong>
               <li>
-                <a href="">
+                <Link to="/">
                   Bello Horizonte <br /> F8, Cayma, <br /> Arequipa, Perú
-                </a>
+                </Link>
               </li>
             </ul>
             <ul>
               <strong>Ayuda</strong>
               <li>
-                <a href="">Preguntas frecuentes</a>
+                <Link to="/">Preguntas frecuentes</Link>
               </li>
               <li>
-                <a href="">Mi cuenta</a>
+                <Link to="/">Mi cuenta</Link>
               </li>
             </ul>
           </div>

@@ -1,53 +1,40 @@
 import React from "react";
 import { Route, Switch } from "react-router";
+
 import AdminHeader from "./components/AdminHeader";
-import "./../../styles/Admin.css"
-import "./../../styles/dashboard.css"
-import AdminCrearProducto from "./pages/producto/AdminCrearProducto";
-import AdminProductoPage from "./pages/producto/AdminProductoPage";
-import AdminCrearMarca from "./pages/marca/AdminCrearMarca";
-import AdminMarcaPage from "./pages/marca/AdminMarcaPage";
-import AdminCrearCategoria from "./pages/categoria/AdminCrearCategoria";
-import AdminCategoriaPage from "./pages/categoria/AdminCategoriaPage";
+
 import AdminDashboardPage from "./pages/dashboard/AdminDashboardPage";
+import AdminProductoRouter from "./pages/producto/AdminProductoRouter";
+import AdminMarcaRouter from "./pages/marca/AdminMarcaRouter";
+import AdminCategoriaRouter from "./pages/categoria/AdminCategoriaRouter";
+
+import "./../../styles/Admin.css";
+import "./../../styles/dashboard.css";
+import AdminNavbar from "./components/AdminNavbar";
+import AdminState from "../../context/adminState";
 
 const AdminRouter = () => {
   return (
-    <>
+    <AdminState>
       <AdminHeader />
-      <Switch>
-        <Route path="/admin/categoria/editar/:id_categoria">
-          <AdminCrearCategoria />
-        </Route>
-        <Route path="/admin/categoria/crear">
-          <AdminCrearCategoria />
-        </Route>
-        <Route path="/admin/categoria">
-          <AdminCategoriaPage />
-        </Route>
-        <Route path="/admin/marca/editar/:id_marca">
-          <AdminCrearMarca />
-        </Route>
-        <Route path="/admin/marca/crear">
-          <AdminCrearMarca />
-        </Route>
-        <Route path="/admin/marca">
-          <AdminMarcaPage />
-        </Route>
-        <Route path="/admin/producto/editar/:id_producto">
-          <AdminCrearProducto />
-        </Route>
-        <Route path="/admin/producto/crear">
-          <AdminCrearProducto />
-        </Route>
-        <Route path="/admin/producto" exact>
-          <AdminProductoPage />
-        </Route>
-        <Route path="/admin">
-          <AdminDashboardPage />
-        </Route>
-      </Switch>
-    </>
+      <main className="admin__main">
+        <AdminNavbar />
+        <Switch>
+          <Route path="/admin/categoria">
+            <AdminCategoriaRouter/>
+          </Route>
+          <Route path="/admin/marca">
+            <AdminMarcaRouter/>
+          </Route>
+          <Route path="/admin/producto">
+            <AdminProductoRouter/>
+          </Route>
+          <Route path="/admin">
+            <AdminDashboardPage />
+          </Route>
+        </Switch>
+      </main>
+    </AdminState>
   );
 };
 
