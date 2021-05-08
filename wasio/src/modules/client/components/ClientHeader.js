@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useContext, useRef } from "react";
+import { useHistory } from "react-router";
+import CarritoContext from "../../../context/carrito/carritoContext";
 import "../../../styles/Header.css";
+import {NavLink} from 'react-router-dom'
 
 const ClientHeader = () => {
+
+const {setTag, carrito} = useContext(CarritoContext);
+
+
+const refInputBusqueda = useRef();
+
+const history = useHistory();
+
+const handleSubmit = e => {
+  setTag("");
+  if (e.keyCode === 13 &&
+    refInputBusqueda.current.value.trim() !== ""   
+    ){
+    setTag(refInputBusqueda.current.value.trim());
+    history.push("/productos");
+    
+  }
+}
+
+
   return (
     <header class="header">
       <div class="header__wrapper seccion1">
@@ -14,11 +37,14 @@ const ClientHeader = () => {
                 class="buscarmq open-mobile"
                 type="text"
                 placeholder="Buscar"
+                onKeyUp={handleSubmit}
+                ref={refInputBusqueda}
               />
             </div>
           </div>
 
           <div class="header__logo">
+            <NavLink to="/">
             <figure class="figure__logo">
               <img
                 class="imagen__logo"
@@ -26,12 +52,17 @@ const ClientHeader = () => {
                 alt=""
               />
             </figure>
+            </NavLink>
           </div>
 
           <div class="header__buscador">
             <div class="buscador">
               <button type="submit" class="fas fa-search"></button>
-              <input class="buscar" type="text" placeholder="Buscar" />
+              <input class="buscar" 
+              type="text" 
+              placeholder="Buscar" 
+              onKeyUp={handleSubmit}
+              ref={refInputBusqueda}/>
             </div>
           </div>
 
@@ -44,10 +75,9 @@ const ClientHeader = () => {
             </li>
             <li>
               <a href="#" class="lih link__Carrito">
-                <button class="fas fa-shopping-cart"></button>
+                <NavLink to="/carrito"><button class="fas fa-shopping-cart"></button></NavLink>
                 <div class="car__div">
-                  <p class="text__header__link car" id="Carrito__contador">
-                    0
+                  <p class="text__header__link car" id="Carrito__contador">{carrito.length}
                   </p>
                 </div>
               </a>
