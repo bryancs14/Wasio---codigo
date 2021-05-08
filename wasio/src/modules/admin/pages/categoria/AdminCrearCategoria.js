@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import { getMarcaById, postMarca, putMarcaById } from "../../../../services/marcasService";
-import AdminNavbar from "../../components/AdminNavbar";
+import React, { useEffect, useState } from 'react'
+import { useHistory, useParams } from 'react-router';
+import { getCategoriaById, postCategoria, putCategoriaById, putMarcaById } from '../../../../services/categoriasServices';
+import AdminNavbar from '../../components/AdminNavbar'
 
-const AdminCrearMarca = () => {
+const AdminCrearCategoria = () => {
+
   const formularioVacio = {
-    nomb_marca: "",
-    descripcion: "",
-    img_portada: "",
-    img_logo: "",
-  };
+    nomb_categoria: ""
+  }
 
   const [formulario, setFormulario] = useState(formularioVacio);
 
+  const {id_categoria} = useParams();
+
   const history = useHistory();
-  const { id_marca } = useParams();
 
   const hangleChange = (e) => {
     setFormulario({
@@ -25,14 +24,14 @@ const AdminCrearMarca = () => {
 
   const hangleSubmit = (e) => {
     e.preventDefault();
-    if(id_marca) {
-      putMarcaById(formulario).then(rpta => {
+    if(id_categoria) {
+      putCategoriaById(formulario).then(rpta => {
         if (rpta.request.status === 200) {
           console.log("Cambios guardados");
         }
       })
     } else {
-      postMarca(formulario).then((rpta) => {
+      postCategoria(formulario).then((rpta) => {
         if (rpta.request.status === 200) {
           console.log("Marca guardada");
         }
@@ -45,12 +44,12 @@ const AdminCrearMarca = () => {
   };
 
   const hangleCancel = () => {
-    history.replace("/admin/marca");
+    history.replace("/admin/categoria");
   };
 
   useEffect(() => {
-    if (id_marca) {
-      getMarcaById(id_marca).then((rpta) => {
+    if (id_categoria) {
+      getCategoriaById(id_categoria).then((rpta) => {
         if (rpta.request.status === 200) {
           setFormulario(rpta.data);
         }
@@ -63,13 +62,13 @@ const AdminCrearMarca = () => {
       <AdminNavbar />
       <section className="section__crear">
         <form className="Crear__producto" onSubmit={hangleSubmit}>
-          {id_marca ? (
+          {id_categoria ? (
             <div className="input__container2">
               <label htmlFor="">ID:</label>
               <input
                 className="input_1"
                 type="text"
-                value={id_marca}
+                value={id_categoria}
                 disabled
               />
             </div>
@@ -81,30 +80,12 @@ const AdminCrearMarca = () => {
               type="text"
               name="nomb_marca"
               onChange={hangleChange}
-              value={formulario.nomb_marca}
+              value={formulario.nomb_categoria}
             />
-          </div>
-          <div className="input__container1">
-            <label htmlFor="">Descripción:</label>
-            <textarea
-              className="input_1"
-              type="text"
-              name="descripcion"
-              onChange={hangleChange}
-              value={formulario.descripcion}
-            />
-          </div>
-          <div className="input__container1">
-            <label htmlFor="">Foto de portada:</label>
-            <input type="file" />
-          </div>
-          <div className="input__container1">
-            <label htmlFor="">Logo de la marca:</label>
-            <input type="file" />
           </div>
           <div className="Btns__crear">
             <button className="btn__crear btn1" type="submit">
-              <i className="fas fa-upload"></i> <p> {id_marca? "Guardar" : "Crear"} </p>
+              <i className="fas fa-upload"></i> <p> {id_categoria? "Guardar" : "Crear"} </p>
             </button>
             <button
               className="btn__crear btn2"
@@ -124,7 +105,7 @@ const AdminCrearMarca = () => {
         </form>
       </section>
     </main>
-  );
-};
+  )
+}
 
-export default AdminCrearMarca;
+export default AdminCrearCategoria

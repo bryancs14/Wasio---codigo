@@ -7,7 +7,7 @@ const AdminNavbar = () => {
       <div className="sidebar__profile">
         <button className="sidebar__menu open-mobile">&#9776;</button>
       </div>
-      <nav className="sidebar__nav">
+      <nav className="admin__sidebar__nav">
         <ul className="admin__sidebar__list">
           <li className="admin__sidebar__ite">
             <NavLink className="admin__sidebar__link" to="/admin">

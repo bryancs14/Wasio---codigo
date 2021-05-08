@@ -1,31 +1,33 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router';
-import { deleteMarcaById, getMarcas } from '../../../../services/marcasService';
-import AdminNavbar from '../../components/AdminNavbar'
+import { useHistory, useParams } from 'react-router';
+import { getCategorias, deleteCategoriaById } from '../../../../services/categoriasServices'
+import AdminNavbar from '../../components/AdminNavbar';
 
-const AdminMarcaPage = () => {
-
-  const history = useHistory();
-  const [marcas, setMarcas] = useState([]);
+const AdminCategoriaPage = () => {
 
   let borrados = false;
   let borrado = false;
 
-  const traerMarcas = () => {
-    getMarcas().then(rpta => {
+  const [categorias, setCategorias] = useState([]);
+
+  const {id_categoria} = useParams();
+  const history = useHistory();
+
+  const traerCategorias = () => {
+    getCategorias().then(rpta => {
       if(rpta.request.status === 200) {
-        setMarcas(rpta.data);
+        setCategorias(rpta.data);
       }
-    });
+    })
   }
 
   useEffect(() => {
-    traerMarcas();
+    traerCategorias();
   }, [])
 
   const deleteAll = () => {
-    marcas.forEach((objMarca => {
-      deleteMarcaById(objMarca.id).then(rpta => {
+    categorias.forEach((objCategoria => {
+      deleteCategoriaById(objCategoria.id).then(rpta => {
         if(rpta.request.status === 200){
           borrados = true;
         } else {
@@ -38,18 +40,18 @@ const AdminMarcaPage = () => {
     } else {
       console.log("No se pudo borrar todos los productos");
     }
-    traerMarcas();
+    traerCategorias();
   }
 
-  const deleteMarca = (id_marca) => {
-    deleteMarcaById(id_marca).then(rpta => {
+  const deleteCategoria = (id_categoria) => {
+    deleteCategoriaById(id_categoria).then(rpta => {
       if(rpta.request.status === 200){
         borrado = true;
       } else {
         borrado = false;
       }
     })
-    traerMarcas();
+    traerCategorias();
   }
 
   return (
@@ -62,7 +64,7 @@ const AdminMarcaPage = () => {
             <button
               className="btn_admin_lp btnlp1"
               onClick={() => {
-                history.push("/admin/marca/crear");
+                history.push("/admin/categoria/crear");
               }}
             >
               <i className="fas fa-plus"></i>
@@ -70,7 +72,7 @@ const AdminMarcaPage = () => {
             <button
               className="btn_admin_lp btnlp2"
               onClick={() => {
-                traerMarcas();
+                traerCategorias();
               }}
             >
               <i className="fas fa-sync"></i>
@@ -101,24 +103,24 @@ const AdminMarcaPage = () => {
             </thead>
             <tbody>
               {
-                marcas.map((objMarca, i) => {
+                categorias.map((objCategoria, i) => {
                   return (
                     <tr key={i}>
                 <td>
                   <input type="checkbox" />
                 </td>
-                <td>{objMarca.id}</td>
-                <td>{objMarca.nomb_marca}</td>
+                <td>{objCategoria.id}</td>
+                <td>{objCategoria.nomb_categoria}</td>
                 <td>
                   <button type="button" onClick={() => {
-                    history.push("/admin/marca/editar/"+objMarca.id)
+                    history.push("/admin/categoria/editar/"+objCategoria.id)
                   }}>
                     <i className="fas fa-edit"></i>
                   </button>
                 </td>
                 <td>
                   <button onClick={() => {
-                    deleteMarca(objMarca.id);
+                    deleteCategoria(objCategoria.id);
                   }}>
                     <i className="fas fa-trash"></i>
                   </button>
@@ -135,4 +137,4 @@ const AdminMarcaPage = () => {
   )
 }
 
-export default AdminMarcaPage
+export default AdminCategoriaPage

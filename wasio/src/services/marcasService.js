@@ -37,7 +37,7 @@ export const deleteMarcaById = async (id_marca) => {
   return rpta;
 }
 
-export const putProductoById = async ({objMarca}) => {
+export const putMarcaById = async (objMarca) => {
   const rpta = await axios.put(
     URL_BACKEND + "/marca/"+ objMarca.id,
     {...objMarca},

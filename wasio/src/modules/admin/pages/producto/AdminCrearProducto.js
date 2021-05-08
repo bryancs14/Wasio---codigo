@@ -5,6 +5,7 @@ import { getMarcas } from "../../../../services/marcasService";
 import {
   getProductoById,
   postProducto,
+  putProductoById,
 } from "../../../../services/productosService";
 import AdminNavbar from "../../components/AdminNavbar";
 
@@ -37,9 +38,19 @@ const AdminCrearProducto = () => {
 
   const hangleSubmit = (e) => {
     e.preventDefault();
-    postProducto(formulario).then((rpta) => {
-      console.log(rpta);
-    });
+    if(id_producto) {
+      putProductoById(formulario).then(rpta => {
+        if (rpta.request.status === 200) {
+          console.log("Cambios guardados");
+        }
+      })
+    } else {
+      postProducto(formulario).then((rpta) => {
+        if (rpta.request.status === 200) {
+          console.log("Producto guardada");
+        }
+      });
+    }
   };
 
   const hangleReset = () => {
@@ -184,7 +195,7 @@ const AdminCrearProducto = () => {
           </div>
           <div className="Btns__crear">
             <button className="btn__crear btn1" type="submit">
-              <i className="fas fa-upload"></i> <p> Crear </p>
+              <i className="fas fa-upload"></i> <p> {id_producto? "Guardar" : "Crear"} </p>
             </button>
             <button
               className="btn__crear btn2"

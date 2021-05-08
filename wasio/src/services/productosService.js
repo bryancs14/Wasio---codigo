@@ -53,7 +53,7 @@ export const deleteProductoById = async (id_producto) => {
   return rpta;
 }
 
-export const putProductoById = async ({objProducto}) => {
+export const putProductoById = async (objProducto) => {
   const rpta = await axios.put(
     URL_BACKEND + "/producto/"+ objProducto.id,
     {...objProducto},
