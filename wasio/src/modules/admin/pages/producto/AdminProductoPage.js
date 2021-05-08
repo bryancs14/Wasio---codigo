@@ -114,8 +114,8 @@ const AdminProductoPage = () => {
                 </td>
                 <td>{objProducto.id}</td>
                 <td>{objProducto.nombre}</td>
-                <td>{objProducto.cat_id}</td>
-                <td>{objProducto.marca_id}</td>
+                <td>{objProducto.cat_id || "Sin categoria"}</td>
+                <td>{objProducto.marca_id || "Sin marca"}</td>
                 <td>{objProducto.stock}</td>
                 <td>{objProducto.precio}</td>
                 <td>{objProducto.porc_descuento}</td>

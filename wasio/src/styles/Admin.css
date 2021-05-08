@@ -147,7 +147,6 @@ body {
   transition: padding-top 0.3s linear, height 0.3s linear;
 }
 .admin__sidebar__ite {
-  padding: 15px 0;
   cursor: pointer;
   transition: background-color 0.5s ease-out;
 }
@@ -158,11 +157,13 @@ body {
   color: #f1f1f1;
   text-decoration: none;
   font-size: 16px;
+  padding: 15px 0;
   padding-left: 35px;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 35px;
+  height: 100%;
 }
 .admin__sidebar__link > .fas {
   color: #fff;
@@ -330,9 +331,6 @@ textarea.input_1 {
   .sidebar__name {
     font-size: 0px;
   }
-  .admin__sidebar__ite {
-    padding: 20px 0;
-  }
   .admin__sidebar__link {
     gap: unset;
     font-size: 25px;
@@ -349,10 +347,6 @@ textarea.input_1 {
   }
   .admin__aside__bar.open .admin__sidebar__text {
     display: unset;
-  }
-
-  .admin__aside__bar.open .admin__sidebar__ite {
-    padding: 15px 0;
   }
 
   .section__crear {
@@ -411,10 +405,6 @@ textarea.input_1 {
     flex-direction: column;
     padding-top: unset;
   }
-  .admin__sidebar__ite {
-    width: 100%;
-    padding: 20px 0;
-  }
   .admin__sidebar__link {
     display: flex;
     flex-direction: row;
@@ -422,7 +412,7 @@ textarea.input_1 {
     justify-content: center;
     gap: 10px;
     font-size: 18px;
-    padding-left: unset;
+    padding: 20px 0;
   }
   .admin__sidebar__text {
     display: unset;
