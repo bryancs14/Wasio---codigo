@@ -6,11 +6,10 @@ import AuthRouter from "./modules/auth/AuthRouter";
 import ClientRouter from "./modules/client/ClientRouter";
 import PrivateRoute from "./PrivateRoute";
 
-
 const App = () => {
   return (
-    <AuthState>
-      <Router>
+    <Router>
+      <AuthState>
         <Switch>
           <PrivateRoute path="/admin">
             <AdminRouter />
@@ -22,8 +21,8 @@ const App = () => {
             <ClientRouter />
           </Route>
         </Switch>
-      </Router>
-    </AuthState>
+      </AuthState>
+    </Router>
   );
 };
 

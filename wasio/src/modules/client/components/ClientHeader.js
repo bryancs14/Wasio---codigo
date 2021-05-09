@@ -1,8 +1,9 @@
 import React, { useContext, useRef } from "react";
 import { useHistory } from "react-router";
-import CarritoContext from "../../../context/carrito/carritoContext";
+
 import "../../../styles/Header.css";
 import {NavLink} from 'react-router-dom'
+import CarritoContext from "../../../context/carrito/carritoContext";
 
 const ClientHeader = () => {
 
